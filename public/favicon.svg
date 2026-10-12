@@ -3,15 +3,10 @@
     stesso logo di AppLogo: griglia 8×4 unità, ogni pezzo alto 1 unità.
     Il formato è quadrato (8×8), quindi il logo è centrato in verticale:
     il gruppo è spostato di 2 unità verso il basso.
-    Tema chiaro: logo scuro (zinc-950), tema scuro: logo chiaro (zinc-200)
+    Sfondo zinc-950 e logo zinc-200, gli stessi colori del sito
   -->
-  <style>
-    .logo { fill: #09090b; }
-    @media (prefers-color-scheme: dark) {
-      .logo { fill: #e4e4e7; }
-    }
-  </style>
-  <g class="logo" transform="translate(0 2)">
+  <rect width="8" height="8" fill="#09090b" />
+  <g fill="#e4e4e7" transform="translate(0 2)">
     <rect x="0" y="1" width="2" height="1" />
     <rect x="0" y="2" width="1" height="1" />
     <rect x="0" y="3" width="2" height="1" />
