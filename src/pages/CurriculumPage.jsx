@@ -8,12 +8,10 @@ const introText = "Formazione artistica ed esperienza nel graphic design sono al
 
 export default function CurriculumPage() {
 
-    // apre il pdf in una nuova scheda: essendo un pdf (non html), il
-    // browser lo mostra nel proprio lettore pdf nativo invece di
-    // navigarci sopra — niente dialogo di stampa, il file va rigenerato ed
-    // esportato a mano in public/cv.pdf quando il cv cambia
+    // apre il pdf in una nuova scheda, nel lettore pdf del browser. Il file
+    // sta in public/ (indirizzo fisso): quando il cv cambia va riesportato lì
     const handleGetCv = () => {
-        window.open("/cv.pdf", "_blank");
+        window.open("/odon-airoldi-cv.pdf", "_blank");
     };
 
     const [copied, setCopied] = useState(false)
@@ -61,7 +59,7 @@ export default function CurriculumPage() {
                     </div>
                 </div>
                 <div className="col-span-6 md:col-span-2">
-                    <button className="alive text-xs sm:text-sm xl:text-base font-extralight word-spacing-[.5em] leading-none tracking-wide uppercase overflow-hidden cursor-pointer block w-full text-left" to="/cv">
+                    <button className="alive text-xs sm:text-sm xl:text-base font-extralight word-spacing-[.5em] leading-none tracking-wide uppercase overflow-hidden cursor-pointer block w-full text-left" type="button" onClick={handleGetCv}>
                         <div className="word-reveal border-t border-zinc-200 pt-2">Get C V</div>
                     </button>
                 </div>
