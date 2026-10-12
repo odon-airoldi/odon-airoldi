@@ -148,7 +148,7 @@ export default function CurriculumPagePrint() {
                                         <ul>
                                             {
                                                 item.items.map((voce) => (
-                                                    <li key={voce.title}>{voce.title}</li>
+                                                    <li key={voce.title}><Link to={voce.url}>{voce.title}</Link></li>
                                                 ))
                                             }
                                         </ul>

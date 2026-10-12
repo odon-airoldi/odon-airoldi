@@ -129,6 +129,15 @@ const work = [
                 `,
                 url_text: "www.studiofotograficolops.it",
                 url: "https://www.studiofotograficolops.it"
+            },
+            {
+                id: 7,
+                title: "Swiss R&D SA",
+                description: `
+                Sito corporate per una società svizzera. Ho trasposto il progetto grafico in pagine PHP con template fedeli al design, sviluppando un layout responsive che mantiene leggibilità e coerenza visiva.
+                `,
+                url_text: "www.swiss-redsa.ch",
+                url: "https://swiss-redsa.ch"
             }
         ]
     },
