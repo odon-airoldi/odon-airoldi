@@ -20,7 +20,7 @@ export default function IndexPage() {
 
     return (
 
-        <div className="sm:py-4">
+        <div className="py-4">
 
             <div className="grid grid-cols-12 gap-x-2 xl:gap-x-4">
                 <div className="md:col-span-4 max-sm:hidden">
@@ -42,7 +42,7 @@ export default function IndexPage() {
                 </div>
                 <div className="col-span-12 sm:col-span-2 md:col-span-2">
                     <Link className="alive text-xs md:text-sm xl:text-base font-extralight word-spacing-[.5em] max-sm:text-[6vw] leading-none tracking-wide uppercase overflow-hidden" to="/cv">
-                        <span className="word-reveal block max-sm:flex max-sm:justify-between"><span className="sm:hidden">MY</span><span>C V</span></span>
+                        <span className="word-reveal block max-sm:flex max-sm:justify-end"><span>C V</span></span>
                     </Link>
                 </div>
                 <div className="sm:col-span-2 md:col-span-2 max-sm:hidden">

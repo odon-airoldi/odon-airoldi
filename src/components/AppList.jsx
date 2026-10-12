@@ -98,8 +98,6 @@ export default function AppList({ list }) {
                                             {openId === voce.id && voce.gallery && createPortal(
                                                 <div className="fixed z-50 inset-0 flex items-center justify-center overflow-hidden">
                                                     <div className="absolute inset-0 z-51 bg-zinc-950/75" onClick={() => setOpenId(null)}></div>
-                                                    {/* pointer-events-none su lista e slide: il click sullo spazio attorno alle
-                                                        immagini passa allo sfondo e chiude. Solo le immagini restano cliccabili */}
                                                     <ul className="grid place-items-center z-52 pointer-events-none" ref={itemsRef}>
                                                         {voce.gallery.map((img) => (
                                                             <li key={img} className="col-start-1 row-start-1 px-4 py-8">
