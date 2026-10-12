@@ -31,8 +31,8 @@ export default function AppIntro({ onDone }) {
 
     return (
         <div ref={containerRef} className="fixed inset-0 z-50 bg-zinc-950 text-zinc-200 flex items-center justify-center">
-            <div className="font-zalando font-stretch-[117.5%] font-extralight text-[6vw] sm:text-[7.5vw] tracking-[1em]">
-                <span ref={counterRef}>0</span>%
+            <div className="font-zalando font-stretch-[117.5%] font-extralight text-[6vw] sm:text-[7.5vw]">
+                <span ref={counterRef} className="tracking-[1em]">0</span>%
             </div>
         </div>
     );
