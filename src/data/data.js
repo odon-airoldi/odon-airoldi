@@ -1,3 +1,12 @@
+// tutte le immagini delle gallery, importate da Vite (percorso → url finale)
+const images = import.meta.glob("../assets/odon-airoldi-*.webp", { eager: true, import: "default" })
+
+// immagini di un progetto, in ordine: gallery("le-corne") → odon-airoldi-le-corne-01, -02, ...
+const gallery = (slug) => Object.keys(images)
+    .filter((path) => new RegExp(`/odon-airoldi-${slug}-\\d+\\.webp$`).test(path))
+    .sort()
+    .map((path) => images[path])
+
 const stack = [
     {
         id: 1,
@@ -149,52 +158,60 @@ const work = [
                 id: 11,
                 title: "Tenuta Casa Virginia",
                 description: "description 1",
-                gallery: [
-                    "https://placehold.co/960x480?text=uno",
-                    "https://placehold.co/960x480?text=due",
-                    "https://placehold.co/960x480?text=tre"
-                ]
+                gallery: gallery("tenuta-casa-virginia")
             },
             {
                 id: 12,
                 title: "Le Corne",
                 description: "description 2",
-                gallery: [
-                    "https://placehold.co/960x480?text=uno",
-                    "https://placehold.co/960x480?text=due",
-                    "https://placehold.co/960x480?text=tre"
-                ]
+                gallery: gallery("le-corne")
             },
             {
                 id: 13,
                 title: "Nove Lune",
                 description: "description 3",
-                gallery: [
-                    "https://placehold.co/960x480?text=uno",
-                    "https://placehold.co/960x480?text=due",
-                    "https://placehold.co/960x480?text=tre"
-                ]
+                gallery: gallery("nove-lune")
             },
             {
                 id: 14,
-                title: "Bergamo Sposi",
-                description: "description 4",
-                gallery: [
-                    "https://placehold.co/960x480?text=uno",
-                    "https://placehold.co/960x480?text=due",
-                    "https://placehold.co/960x480?text=tre"
-                ]
+                title: "EB Arredamenti",
+                description: "description 6",
+                gallery: gallery("eb-arredamenti")
             },
             {
                 id: 15,
-                title: "Ca Alta",
-                description: "description 5",
-                gallery: [
-                    "https://placehold.co/960x480?text=uno",
-                    "https://placehold.co/960x480?text=due",
-                    "https://placehold.co/960x480?text=tre"
-                ]
+                title: "Formenti",
+                description: "description 7",
+                gallery: gallery("formenti")
             },
+            {
+                id: 16,
+                title: "JVal",
+                description: "description 8",
+                gallery: gallery("jval")
+            },
+            {
+                id: 17,
+                title: "MGS",
+                description: "description 9",
+                gallery: gallery("mgs")
+            },
+            // {
+            //     id: 14,
+            //     title: "Bergamo Sposi",
+            //     description: "description 4",
+            //     gallery: [
+
+            //     ]
+            // },
+            // {
+            //     id: 15,
+            //     title: "Ca Alta",
+            //     description: "description 5",
+            //     gallery: [
+
+            //     ]
+            // },
         ]
     },
 ]

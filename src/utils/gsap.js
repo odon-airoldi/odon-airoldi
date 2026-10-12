@@ -125,7 +125,8 @@ export function createInfiniteGallery(itemsEl, dragProxyEl, onClose) {
         // BLOCCATO, quindi uno swipe verticale ha lockedAxis "x"
         type: "x,y",
         lockAxis: true,
-        trigger: itemsEl,
+        // solo le immagini: lo spazio attorno resta libero per il click di chiusura
+        trigger: itemsEl.querySelectorAll("img"),
         onPress() {
             settleTween?.kill();
             swipeTween?.kill();
