@@ -12,7 +12,7 @@ gsap.registerPlugin(useGSAP);
 
 export default function AppLayout() {
 
-    const { cursorRef, showSplash } = useAppContext();
+    const { showSplash } = useAppContext();
     const { pathname } = useLocation();
     const layoutRef = useRef(null);
 
@@ -43,8 +43,6 @@ export default function AppLayout() {
 
     return (
         <div ref={layoutRef} className="bg-zinc-950 text-zinc-200 font-zalando font-stretch-[117.5%] relative min-h-svh">
-
-            <div ref={cursorRef} className="fixed w-3 h-3 bg-zinc-200 pointer-events-none z-50 max-md:hidden print:hidden"></div>
 
             <AppHeader />
             <div className="overflow-hidden px-2 sm:px-4">

@@ -1,10 +1,6 @@
 // importa le due funzioni di React per creare e leggere un context
-import { createContext, useContext, useRef, useState } from "react";
-import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
+import { createContext, useContext, useState } from "react";
 import AppIntro from "../components/AppIntro";
-
-gsap.registerPlugin(useGSAP);
 
 // crea il context
 const AppContext = createContext();
@@ -17,36 +13,11 @@ function AppProvider({ children }) {
     // come prop attraverso App.jsx
     const [showSplash, setShowSplash] = useState(true);
 
-    const cursorRef = useRef(null);
-
-    // cursore custom globale: essendo nel Provider (che avvolge tutte le pagine
-    // in App.jsx), funziona ovunque senza doverlo ripetere in ogni pagina.
-    // dependencies: [] lo fa girare una sola volta al mount — senza, essendo
-    // senza cleanup, ogni re-render di AppProvider (es. quando showSplash
-    // cambia) aggiungerebbe un nuovo listener invece di riusare quello
-    // esistente, facendo accumulare handler duplicati nel tempo
-    useGSAP(() => {
-
-        const handleMove = (e) => {
-            gsap.set(cursorRef.current, { x: e.clientX - 0, y: e.clientY - 0 });
-        };
-
-        window.addEventListener("mousemove", handleMove);
-
-        return () => {
-            window.removeEventListener("mousemove", handleMove);
-        };
-    }, { dependencies: [] });
-
-
-
-
     return (
         // .Provider è il componente che distribuisce il value ai discendenti
         <AppContext.Provider
             value={{
                 // qui vanno i dati/funzioni condivisi
-                cursorRef,
                 // esposto così le pagine possono far partire le proprie
                 // animazioni solo quando la splash è finita
                 showSplash

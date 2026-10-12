@@ -17,14 +17,6 @@
     text-justify: inter-character;
 }
 
-/* link e bottoni hanno un cursor:pointer di default del browser che vince
-   sull'ereditarietà di cursor-none (Tailwind) sul contenitore: serve una regola
-   dedicata, più specifica, per nascondere la freccia nativa anche su di loro */
-.cursor-none a,
-.cursor-none button {
-    cursor: none;
-}
-
 @page {
     size: A4;
     margin: 0;
