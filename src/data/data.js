@@ -180,19 +180,19 @@ const work = [
             },
             {
                 id: 15,
-                title: "Formenti",
+                title: "Formenti MR",
                 description: "description 7",
                 gallery: gallery("formenti")
             },
             {
                 id: 16,
-                title: "JVal",
+                title: "J-Val",
                 description: "description 8",
                 gallery: gallery("jval")
             },
             {
                 id: 17,
-                title: "MGS",
+                title: "Mgs Thermal",
                 description: "description 9",
                 gallery: gallery("mgs")
             },
