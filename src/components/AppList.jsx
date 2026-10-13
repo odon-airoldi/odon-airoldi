@@ -42,7 +42,7 @@ export default function AppList({ list }) {
                                         <li key={voce}>{voce}</li>
                                     ) : (
                                         <li key={voce.id} className="">
-                                            <button className="cursor-pointer flex gap-1 items-center" onClick={() => setOpenId(openId === voce.id ? null : voce.id)}>
+                                            <button className="cursor-pointer flex gap-1 items-center hover:text-zinc-50" onClick={() => setOpenId(openId === voce.id ? null : voce.id)}>
                                                 <span>{voce.title}</span>
                                                 {voce.url ?
                                                     (openId !== voce.id ?
@@ -90,7 +90,7 @@ export default function AppList({ list }) {
                                                                 <span className="absolute top-3/8 left-4/12 w-1/12 h-3/8 bg-zinc-200"></span>
                                                                 <span className="absolute top-0 left-10/12 w-2/12 h-1/8 bg-zinc-200"></span>
                                                             </span>
-                                                            <Link className="" to={voce.url} target="_blank">{voce.url_text}</Link>
+                                                            <Link className="hover:text-zinc-50" to={voce.url} target="_blank">{voce.url_text}</Link>
                                                         </div>
                                                     </div>
                                                 </div>

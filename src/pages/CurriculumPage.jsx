@@ -59,12 +59,12 @@ export default function CurriculumPage() {
                     </div>
                 </div>
                 <div className="col-span-6 md:col-span-2">
-                    <button className="alive text-xs sm:text-sm xl:text-base font-extralight word-spacing-[.5em] leading-none tracking-wide uppercase overflow-hidden cursor-pointer block w-full text-left" type="button" onClick={handleGetCv}>
+                    <button className="alive text-xs sm:text-sm xl:text-base font-extralight word-spacing-[.5em] leading-none tracking-wide uppercase overflow-hidden cursor-pointer block w-full text-left hover:text-zinc-50" type="button" onClick={handleGetCv}>
                         <div className="word-reveal border-t border-zinc-200 pt-2">Get C V</div>
                     </button>
                 </div>
                 <div className="col-span-6 md:col-span-2">
-                    <button className="alive text-xs sm:text-sm xl:text-base font-extralight word-spacing-[.5em] leading-none tracking-wide uppercase overflow-hidden cursor-pointer block w-full text-left" type="button" onClick={handleCopyEmail}>
+                    <button className="alive text-xs sm:text-sm xl:text-base font-extralight word-spacing-[.5em] leading-none tracking-wide uppercase overflow-hidden cursor-pointer block w-full text-left hover:text-zinc-50" type="button" onClick={handleCopyEmail}>
                         <div className="word-reveal border-t border-zinc-200 pt-2">{copied ? "Email copied" : "Email me"}</div>
                     </button>
                 </div>
@@ -97,7 +97,7 @@ export default function CurriculumPage() {
 
             <div className="hidden">
                 <div className="font-medium text-[40px] text-justify text-justify-last tracking-tighter uppercase">
-                    Portfolio on <Link to="https://www.odon-airoldi.com">odon-airoldi.com</Link>
+                    Portfolio on <Link className="hover:text-zinc-50" to="https://www.odon-airoldi.com">odon-airoldi.com</Link>
                 </div>
             </div>
 

@@ -41,12 +41,12 @@ export default function IndexPage() {
                     <AppList list={work} />
                 </div>
                 <div className="col-span-12 sm:col-span-2 md:col-span-2">
-                    <Link className="alive text-xs md:text-sm xl:text-base font-extralight word-spacing-[.5em] max-sm:text-[6vw] leading-none tracking-wide uppercase overflow-hidden" to="/cv">
+                    <Link className="alive text-xs md:text-sm xl:text-base font-extralight word-spacing-[.5em] max-sm:text-[6vw] leading-none tracking-wide uppercase overflow-hidden hover:text-zinc-50" to="/cv">
                         <span className="word-reveal block max-sm:flex max-sm:justify-end"><span>C V</span></span>
                     </Link>
                 </div>
                 <div className="sm:col-span-2 md:col-span-2 max-sm:hidden">
-                    <button className="alive text-xs md:text-sm xl:text-base font-extralight word-spacing-[.5em] leading-none tracking-wide uppercase overflow-hidden cursor-pointer block w-full text-left" type="button" onClick={handleCopyEmail}>
+                    <button className="alive text-xs md:text-sm xl:text-base font-extralight word-spacing-[.5em] leading-none tracking-wide uppercase overflow-hidden cursor-pointer block w-full text-left hover:text-zinc-50" type="button" onClick={handleCopyEmail}>
                         <span className="word-reveal block">{copied ? "Email copied" : "Email me"}</span>
                     </button>
                 </div>
