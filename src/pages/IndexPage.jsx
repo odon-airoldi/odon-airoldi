@@ -7,9 +7,6 @@ export default function IndexPage() {
 
     const [copied, setCopied] = useState(false)
 
-    // mostra "Email copied" solo se la copia negli appunti riesce davvero (try), non a
-    // prescindere dal click: se il browser nega il permesso (catch) il testo resta
-    // invariato invece di dare un falso esito positivo. Torna a "Email me" dopo 2s
     const handleCopyEmail = async () => {
         try {
             await navigator.clipboard.writeText('odon.airoldi@gmail.com')

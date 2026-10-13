@@ -22,7 +22,7 @@ export default function CurriculumPagePrint() {
                 </header>
                 <div className="col-span-12">
                     <p className="text-[12pt] font-extralight uppercase leading-none text-justify word-spacing-[.5em]">
-                        Formazione artistica ed esperienza nel graphic design sono all'origine del mio orientamento allo sviluppo web. Ho intrapreso questa direzione nel corso delle mie esperienze professionali, per poi consolidarla attraverso un percorso formativo fullstack. Metodo progettuale e sensibilità visiva accompagnano oggi il mio lavoro da sviluppatore.
+                        Nei progetti di graphic design nasce il mio orientamento allo sviluppo web. Nelle esperienze professionali ho intrapreso questa direzione per poi consolidarla attraverso un percorso formativo fullstack. Metodo progettuale e sensibilità visiva accompagnano oggi il mio lavoro da sviluppatore.
                     </p>
                 </div>
                 <div className="col-span-4">
