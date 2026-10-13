@@ -11,22 +11,32 @@ const stack = [
     {
         id: 1,
         title: "Frontend",
-        items: ["React", "JavaScript", "CSS", "Tailwind", "Bootstrap", "Vite"]
+        items: ["HTML", "CSS", "JavaScript", "React", "Tailwind", "Bootstrap", "Vite"]
     },
     {
         id: 2,
         title: "Backend",
-        items: ["Node", "Express", "Php", "Laravel", "Rest API"]
+        items: ["Node", "Express", "PHP", "Laravel", "REST API"]
     },
     {
         id: 3,
         title: "Database",
-        items: ["Mysql", "Sqlite"]
+        items: ["MySql", "SQlite"]
     },
     {
         id: 4,
         title: "Cms",
-        items: ["Wordpress"]
+        items: ["Wordpress", "WooCommerce", "NopCommerce"]
+    },
+    {
+        id: 5,
+        title: "Tool",
+        items: ["Git", "GitHub", "Npm", "FTP"]
+    },
+    {
+        id: 6,
+        title: "Design",
+        items: ["Illustrator", "InDesign", "Photoshop"]
     },
 ]
 
@@ -84,19 +94,10 @@ const esperienza = [
 const work = [
     {
         id: 1,
-        title: "Websites",
+        title: "Website",
         items: [
             {
                 id: 1,
-                title: "Run Club",
-                description: `
-                Applicazione full stack con frontend in React e backend in Laravel, comunicanti tramite API RESTful.Ho implementato l'autenticazione degli utenti con Laravel Sanctum, progettato lo schema relazionale su MySQL e gestito migrazioni e relazioni tra entità con Eloquent ORM, strutturando gli endpoint secondo un'architettura MVC.
-                `,
-                url_text: "Repo on Github",
-                url: "https://github.com/odon-airoldi/run-club-api"
-            },
-            {
-                id: 2,
                 title: "Tuttocialde",
                 description: `
                 Redesign UI di un e-commerce basato su nopCommerce. Ho sviluppato i template frontend in HTML e CSS e li ho integrati nelle view Razor della piattaforma, adattando il layout ai componenti nativi di catalogo, carrello e checkout.
@@ -105,12 +106,21 @@ const work = [
                 url: "https://www.tuttocialde.it"
             },
             {
-                id: 3,
+                id: 2,
                 title: "Caffè Agostani",
                 description: `
                 Sviluppo frontend da zero di un e-commerce su nopCommerce. Ho convertito il design in template HTML e CSS responsive e li ho integrati nelle view Razor, collegandoli ai componenti e ai dati gestiti dalla piattaforma.        `,
                 url_text: "www.caffeagostani.com",
                 url: "https://www.caffeagostani.com"
+            },
+            {
+                id: 3,
+                title: "Run Club",
+                description: `
+                Applicazione full stack con frontend in React e backend in Laravel, comunicanti tramite API RESTful.Ho implementato l'autenticazione degli utenti con Laravel Sanctum, progettato lo schema relazionale su MySQL e gestito migrazioni e relazioni tra entità con Eloquent ORM, strutturando gli endpoint secondo un'architettura MVC.
+                `,
+                url_text: "Repo on Github",
+                url: "https://github.com/odon-airoldi/run-club-api"
             },
             {
                 id: 4,
@@ -152,7 +162,7 @@ const work = [
     },
     {
         id: 2,
-        title: "Designs",
+        title: "Graphic",
         items: [
             {
                 id: 11,
