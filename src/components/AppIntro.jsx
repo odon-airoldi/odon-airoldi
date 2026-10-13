@@ -36,8 +36,8 @@ export default function AppIntro({ onDone }) {
             </div>
 
             <div className="absolute bottom-4 right-4">
-                <div className="flex gap-[10px] w-full justify-center">
-                    <div className="aspect-2/1 w-[80px] relative x">
+                <div className="flex gap-[16px] w-full justify-center">
+                    <div className="aspect-2/1 w-[64px] relative x">
                         <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-0/0 top-0/4 2"></div>
                         <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-1/8 top-0/4 4"></div>
                         <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-2/8 top-0/4"></div>
@@ -61,7 +61,7 @@ export default function AppIntro({ onDone }) {
                         <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-6/8 top-2/4 1"></div>
                     </div>
 
-                    <div className="aspect-2/1 w-[80px] relative a">
+                    <div className="aspect-2/1 w-[64px] relative a">
                         <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-0/0 top-0/4"></div>
                         <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-1/8 top-0/4"></div>
                         <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-2/8 top-0/4"></div>
@@ -85,7 +85,7 @@ export default function AppIntro({ onDone }) {
                         <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-6/8 top-3/4"></div>
                     </div>
 
-                    <div className="aspect-2/1 w-[80px] relative b">
+                    <div className="aspect-2/1 w-[64px] relative b">
                         <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-1/8 top-0/4"></div>
                         <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-2/8 top-0/4"></div>
                         <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-3/8 top-0/4"></div>
@@ -109,7 +109,7 @@ export default function AppIntro({ onDone }) {
                         <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-7/8 top-3/4"></div>
                     </div>
 
-                    <div className="aspect-2/1 w-[80px] relative c">
+                    <div className="aspect-2/1 w-[64px] relative c">
                         <div className="bg-zinc-200 absolute h-1/4 w-2/8 left-0 top-1/4"></div>
                         <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-0 top-1/2"></div>
                         <div className="bg-zinc-200 absolute h-1/4 w-2/8 left-0 top-3/4"></div>
