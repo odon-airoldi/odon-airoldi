@@ -169,7 +169,7 @@ export default function CurriculumPagePrint() {
                         <li>
                             <span className="inline-block -translate-x-full">Italiano</span>
                             <ul>
-                                <li>Lingua Madre</li>
+                                <li>Lingua madre</li>
                             </ul>
                         </li>
                         <li>
