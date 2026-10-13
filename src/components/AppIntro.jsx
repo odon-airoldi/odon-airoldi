@@ -1,21 +1,35 @@
 import { gsap } from "gsap"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import AppLogo from "./AppLogo"
 
 export default function AppIntro({ onDone }) {
     const containerRef = useRef(null);
     const counterRef = useRef(null);
 
-    // la splash dura quanto l'animazione del logo più un secondo: il contatore
-    // segue l'avanzamento del logo e, quando il logo è formato, la splash
-    // sparisce in un secondo. Cambiando i tempi del logo, la splash si adatta
+    // la splash segue l'animazione del logo: il contatore ne mostra
+    // l'avanzamento e, quando il logo è formato, la splash resta ferma HOLD
+    // secondi e poi sparisce in un secondo. Cambiando i tempi del logo, la
+    // splash si adatta
+    // testo sotto il logo: cambia all'inizio di alcuni passi, e alla fine
+    // mostra il nome completo
+    const STEP_LABELS = { 2: "O", 3: "A" };
+    const [label, setLabel] = useState("");
+
+    const handleLogoStep = (step) => {
+        if (STEP_LABELS[step]) setLabel(STEP_LABELS[step]);
+    };
+
     const handleLogoProgress = (progress) => {
         counterRef.current.textContent = Math.round(progress * 100);
     };
 
+    // a logo formato aspetta HOLD secondi, poi la splash svanisce
+    const HOLD = 1;
     const handleLogoComplete = () => {
+        setLabel("Odon Airoldi");
         gsap.to(containerRef.current, {
             opacity: 0,
+            delay: HOLD,
             duration: 1,
             ease: "power1.out",
             onComplete: onDone,
@@ -27,101 +41,17 @@ export default function AppIntro({ onDone }) {
 
             <div className="w-full h-full flex items-center justify-center">
                 <div className="w-[240px] mx-auto">
-                    <AppLogo waitForSplash={false} onProgress={handleLogoProgress} onComplete={handleLogoComplete} />
+                    <AppLogo waitForSplash={false} onProgress={handleLogoProgress} onStep={handleLogoStep} onComplete={handleLogoComplete} />
+                    {/* altezza fissa: lo spazio resta riservato anche quando il testo è vuoto,
+                        così il logo non si sposta quando compare */}
+                    <div className="mt-6 h-6 leading-6 font-extralight text-xl uppercase tracking-wide text-center">
+                        {label}
+                    </div>
                 </div>
             </div>
 
             <div className="absolute top-4 left-4 font-extralight text-xl text-center">
                 <span ref={counterRef} className="tracking-[1em]">0</span>%
-            </div>
-
-            <div className="absolute bottom-4 right-4">
-                <div className="flex gap-[16px] w-full justify-center">
-                    <div className="aspect-2/1 w-[64px] relative x">
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-0/0 top-0/4 2"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-1/8 top-0/4 4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-2/8 top-0/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-3/8 top-0/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-4/8 top-0/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-5/8 top-0/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-6/8 top-0/4 4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-7/8 top-0/4 2"></div>
-
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-0/0 top-1/4 2"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-7/8 top-1/4 2"></div>
-
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-0/0 top-2/4 2"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-7/8 top-2/4 2"></div>
-
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-1/8 top-2/4 1"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-2/8 top-2/4 1 3"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-3/8 top-2/4 1 3"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-4/8 top-2/4 1 3"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-5/8 top-2/4 1 3"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-6/8 top-2/4 1"></div>
-                    </div>
-
-                    <div className="aspect-2/1 w-[64px] relative a">
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-0/0 top-0/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-1/8 top-0/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-2/8 top-0/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-3/8 top-0/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-4/8 top-0/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-5/8 top-0/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-6/8 top-0/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-7/8 top-0/4"></div>
-
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-0/0 top-1/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-7/8 top-1/4"></div>
-
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-0/0 top-2/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-7/8 top-2/4"></div>
-
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-1/8 top-3/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-2/8 top-3/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-3/8 top-3/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-4/8 top-3/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-5/8 top-3/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-6/8 top-3/4"></div>
-                    </div>
-
-                    <div className="aspect-2/1 w-[64px] relative b">
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-1/8 top-0/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-2/8 top-0/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-3/8 top-0/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-4/8 top-0/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-5/8 top-0/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-6/8 top-0/4"></div>
-
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-0/0 top-1/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-7/8 top-1/4"></div>
-
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-0/0 top-2/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-7/8 top-2/4"></div>
-
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-0/0 top-3/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-1/8 top-3/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-2/8 top-2/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-3/8 top-2/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-4/8 top-2/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-5/8 top-2/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-6/8 top-3/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-7/8 top-3/4"></div>
-                    </div>
-
-                    <div className="aspect-2/1 w-[64px] relative c">
-                        <div className="bg-zinc-200 absolute h-1/4 w-2/8 left-0 top-1/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-0 top-1/2"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-2/8 left-0 top-3/4"></div>
-
-                        <div className="bg-zinc-200 absolute h-1/4 w-4/8 left-2/8 top-0"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-4/8 left-2/8 top-1/2"></div>
-
-                        <div className="bg-zinc-200 absolute h-1/4 w-2/8 left-6/8 top-1/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-7/8 top-1/2"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-2/8 left-6/8 top-3/4"></div>
-                    </div>
-                </div>
             </div>
 
         </div>
