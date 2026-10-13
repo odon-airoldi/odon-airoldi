@@ -19,9 +19,6 @@ export default function AppFooter() {
             })
     }, [apiKey])
 
-
-    console.log(dataWeather)
-
     return (
 
         <footer>

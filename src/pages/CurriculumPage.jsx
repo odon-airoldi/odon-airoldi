@@ -31,9 +31,7 @@ export default function CurriculumPage() {
 
     return (
         <div className="py-[8vw]">
-
             <div className="grid grid-cols-12 gap-x-2 xl:gap-x-4 gap-y-[8vw]">
-
                 <div className="col-span-12">
                     <p data-stagger="0.02" className="alive text-base sm:text-[3.125vw] font-extralight flex flex-wrap justify-between gap-y-[.125em] gap-x-[.75em] uppercase leading-[.75em] tracking-wide sm:tracking-tighter">
                         {introText.split(" ").flatMap((word, i) => [
@@ -44,7 +42,6 @@ export default function CurriculumPage() {
                         ])}
                     </p>
                 </div>
-
                 <div className="col-span-6 md:col-span-4">
                     <div className="alive text-xs sm:text-sm xl:text-base font-extralight word-spacing-[.5em] leading-none tracking-wide uppercase overflow-hidden">
                         <div className="word-reveal border-t border-zinc-200 pt-2">Odon Airoldi</div>
@@ -94,16 +91,9 @@ export default function CurriculumPage() {
                     </div>
                     <AppList list={work} />
                 </div>
-
             </div>
 
-            <div className="hidden">
-                <div className="font-medium text-[40px] text-justify text-justify-last tracking-tighter uppercase">
-                    Portfolio on <Link className="hover:text-zinc-50" to="https://www.odon-airoldi.com">odon-airoldi.com</Link>
-                </div>
-            </div>
-
-        </div >
+        </div>
     );
 }
 
