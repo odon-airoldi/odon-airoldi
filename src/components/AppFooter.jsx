@@ -32,11 +32,12 @@ export default function AppFooter() {
 
             <div className={`p-2 sm:p-4 fixed bottom-0 left-0 sm:w-32 lg:w-48 ${pathname === "/" ? 'w-full' : 'w-24'}`}>
                 <div className={`w-full`}>
-                    <AppLogo animated={false} />
+                    {/* home: si completa dopo la splash; cv: si modifica con lo scroll */}
+                    <AppLogo variant={pathname === "/" ? "intro" : "scroll"} />
                 </div>
             </div>
 
-            {/* <div className="absolute bottom-4 right-4">
+            <div className="absolute bottom-4 right-4 hidden">
                 <div className="flex gap-[16px] w-full justify-center">
                     <div className="aspect-2/1 w-[64px] relative x">
                         <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-0/0 top-0/4 2"></div>
@@ -123,7 +124,7 @@ export default function AppFooter() {
                         <div className="bg-zinc-200 absolute h-1/4 w-2/8 left-6/8 top-3/4"></div>
                     </div>
                 </div>
-            </div> */}
+            </div>
 
         </footer>
     )

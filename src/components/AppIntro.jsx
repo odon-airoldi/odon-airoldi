@@ -23,7 +23,7 @@ export default function AppIntro({ onDone }) {
 
             <div className="w-full h-full flex items-center justify-center">
                 <div className="w-32 sm:w-64 mx-auto">
-                    <AppLogo showName onComplete={handleLogoComplete} />
+                    <AppLogo variant="splash" showName onComplete={handleLogoComplete} />
                 </div>
             </div>
 
