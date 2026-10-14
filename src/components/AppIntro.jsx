@@ -11,7 +11,7 @@ export default function AppIntro({ onDone }) {
     const handleLogoComplete = () => {
         gsap.to(containerRef.current, {
             opacity: 0,
-            delay: 1, // delay dopo che il logo è formato
+            delay: .6, // delay dopo che il logo è formato
             duration: 1,
             ease: "power1.out",
             onComplete: onDone,

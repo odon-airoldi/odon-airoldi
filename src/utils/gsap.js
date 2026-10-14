@@ -12,6 +12,9 @@ const REVEALS = {
     "reveal-shift": { from: { x: 0, opacity: 0 }, to: { x: "-100%", opacity: 1, ease: "power2.out" } },
     "ul": { from: { x: 16, opacity: 0 }, to: { x: 0, opacity: 1, ease: "power2.out" } },
 };
+// durata dell'animazione di ogni elemento
+const REVEAL_DURATION = .8;
+
 const REVEAL_SELECTOR = Object.keys(REVEALS).map((name) => `.${name}`).join(", ");
 const revealOf = (el) => REVEALS[Object.keys(REVEALS).find((name) => el.classList.contains(name))];
 
@@ -63,7 +66,7 @@ export function toReveal() {
     const timelines = new Map(aliveGroups().map(({ parent, children }) => {
         const stagger = staggerOf(parent);
         const tl = gsap.timeline({ paused: true });
-        children.forEach((el, i) => tl.to(el, { ...revealOf(el).to, duration: .8 }, i * stagger));
+        children.forEach((el, i) => tl.to(el, { ...revealOf(el).to, duration: REVEAL_DURATION }, i * stagger));
         return [parent, tl];
     }));
 
