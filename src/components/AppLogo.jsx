@@ -72,8 +72,7 @@ export default function AppLogo({ animated = true, showName = false, onComplete 
             <div className="bg-zinc-200 absolute left-1/8 top-3/4 w-1/8 h-1/4 item_bl"></div>
             <div className="bg-zinc-200 absolute left-6/8 top-3/4 w-1/8 h-1/4 item_br"></div>
 
-            {/* overflow-hidden fa da maschera: i testi salgono da sotto la riga.
-                grid con tutti nella stessa cella: stanno sovrapposti */}
+            {/* overflow-hidden fa da maschera: i testi salgono da sotto la riga. grid con tutti nella stessa cella: stanno sovrapposti */}
             {showName && (
                 <div className="absolute -bottom-2/4 inset-x-0 grid text-center uppercase font-[450] leading-none text-[10cqw] overflow-hidden">
                     <span className="col-start-1 row-start-1 name_o">O</span>

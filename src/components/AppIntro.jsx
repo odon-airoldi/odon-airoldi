@@ -19,10 +19,10 @@ export default function AppIntro({ onDone }) {
     };
 
     return (
-        <div ref={containerRef} className="fixed inset-0 z-50 bg-zinc-950 text-zinc-200 font-zalando font-stretch-[117.5%]">
+        <div ref={containerRef} className="fixed inset-0 z-50 bg-zinc-950 text-zinc-200 font-zalando font-stretch-[125%]">
 
             <div className="w-full h-full flex items-center justify-center">
-                <div className="w-[240px] mx-auto">
+                <div className="w-32 sm:w-64 mx-auto">
                     <AppLogo showName onComplete={handleLogoComplete} />
                 </div>
             </div>
