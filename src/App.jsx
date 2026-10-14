@@ -5,6 +5,7 @@ import IndexPage from './pages/IndexPage'
 import CurriculumPage from './pages/CurriculumPage'
 import CurriculumPagePrint from './pages/CurriculumPagePrint'
 import { AppProvider } from './contexts/AppContext'
+import { Analytics } from '@vercel/analytics/react'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/print" element={<CurriculumPagePrint />} />
         </Routes>
       </AppProvider>
+      <Analytics />
     </BrowserRouter>
   )
 }
