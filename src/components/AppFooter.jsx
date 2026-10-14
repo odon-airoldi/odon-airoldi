@@ -32,7 +32,7 @@ export default function AppFooter() {
 
             <div className={`p-2 sm:p-4 fixed bottom-0 left-0 sm:w-32 lg:w-48 ${pathname === "/" ? 'w-full' : 'w-24'}`}>
                 <div className={`w-full`}>
-                    <AppLogo />
+                    <AppLogo animated={false} />
                 </div>
             </div>
 
