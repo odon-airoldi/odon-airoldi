@@ -7,9 +7,9 @@ import { useAppContext } from "../contexts/AppContext"
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
 // tempi in secondi
-const START_DELAY = .4;     // attesa prima del primo passo
+const START_DELAY = .2;     // attesa prima del primo passo
 const STEP_DURATION = .6;   // durata di ogni passo
-const STEP_GAP = .4;        // pausa tra un passo e l'altro
+const STEP_GAP = .4;       // pausa tra un passo e l'altro
 
 // le animazioni del logo. Il markup è il logo nella sua forma finale: ogni
 // animazione dichiara da dove parte e come ci arriva.
@@ -25,7 +25,7 @@ const ANIMATIONS = {
 
         const tl = gsap.timeline({
             delay: START_DELAY,
-            defaults: { duration: STEP_DURATION, ease: "power3.in" },
+            defaults: { duration: STEP_DURATION, ease: "power4.in" },
             onComplete() { onComplete?.(); },
         });
 
@@ -35,11 +35,13 @@ const ANIMATIONS = {
 
         // passo 2: le colonne laterali scendono di una unità
         tl.to(".item_l, .item_r", { top: "+=25%" }, `+=${STEP_GAP}`);
+        if (showName) {
+            tl.to(".name_o", { yPercent: 100 }, "<");
+        }
 
         // passo 3: il centro della base risale di una unità e diventa la barra centrale
         tl.to(".item_b", { top: "-=25%" }, `+=${STEP_GAP}`);
         if (showName) {
-            tl.to(".name_o", { yPercent: -100 }, "<");
             tl.to(".name_a", { yPercent: 0 }, "<");
         }
 
@@ -92,7 +94,7 @@ export default function AppLogo({ variant = "splash", showName = false, onComple
         // è già formato, quindi si vede direttamente il nome completo
         if (showName) {
             gsap.set(".name_o, .name_a", { yPercent: 100 });
-            gsap.set(".name_full", { yPercent: variant === "splash" ? 100 : 0 });
+            gsap.set(".name_full", { yPercent: variant === "splash" ? -100 : 0 });
         }
 
         ANIMATIONS[variant]({ showName, onComplete, showSplash });
