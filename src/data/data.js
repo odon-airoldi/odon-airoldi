@@ -129,7 +129,7 @@ const work = [
                 Sito corporate su WordPress con tema custom sviluppato da zero. Ho strutturato i template secondo la template hierarchy di WordPress e implementato in JavaScript un layout a griglia dinamico per la presentazione grafica dei contenuti.
                 `,
                 url_text: "www.geomont.com",
-                url: "https://wwww.geomont.com"
+                url: "https://www.geomont.com"
             },
             {
                 id: 5,
