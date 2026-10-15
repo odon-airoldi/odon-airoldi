@@ -167,43 +167,43 @@ const work = [
             {
                 id: 11,
                 title: "Tenuta Casa Virginia",
-                description: "description 1",
+                description: "",
                 gallery: gallery("tenuta-casa-virginia")
             },
             {
                 id: 12,
                 title: "Le Corne",
-                description: "description 2",
+                description: "",
                 gallery: gallery("le-corne")
             },
             {
                 id: 13,
                 title: "Nove Lune",
-                description: "description 3",
+                description: "",
                 gallery: gallery("nove-lune")
             },
             {
                 id: 14,
                 title: "EB Arredamenti",
-                description: "description 6",
+                description: "",
                 gallery: gallery("eb-arredamenti")
             },
             {
                 id: 15,
                 title: "Formenti MR",
-                description: "description 7",
+                description: "",
                 gallery: gallery("formenti")
             },
             {
                 id: 16,
                 title: "J-Val",
-                description: "description 8",
+                description: "",
                 gallery: gallery("jval")
             },
             {
                 id: 17,
                 title: "Mgs Thermal",
-                description: "description 9",
+                description: "",
                 gallery: gallery("mgs")
             },
             // {
