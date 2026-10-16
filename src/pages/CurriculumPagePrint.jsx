@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { stack, formazione, esperienza, work } from "../data/data"
+import { introText, stack, formazione, esperienza, work } from "../data/data"
 import odonAiroldiCv from "../assets/odon-airoldi-cv.jpg"
 
 export default function CurriculumPagePrint() {
@@ -8,8 +8,7 @@ export default function CurriculumPagePrint() {
     return (
         <div className="h-[297mm] p-[8pt] relative bg-white text-black font-zalando font-stretch-[117.5%]">
 
-            {/* pagina solo per generare il pdf: React 19 sposta il meta nell'<head>,
-                e lo toglie quando si lascia la pagina. noindex = fuori dai motori di ricerca */}
+            {/* pagina solo per generare il pdf: React 19 sposta il meta nell'<head>, e lo toglie quando si lascia la pagina. noindex = fuori dai motori di ricerca */}
             <meta name="robots" content="noindex, nofollow" />
 
             <div className="grid grid-cols-12 gap-x-2 xl:gap-x-4 gap-y-[12pt]">
@@ -22,7 +21,7 @@ export default function CurriculumPagePrint() {
                 </header>
                 <div className="col-span-12">
                     <p className="text-[12pt] font-extralight uppercase leading-none text-justify word-spacing-[.5em]">
-                        Nei progetti di graphic design nasce il mio orientamento allo sviluppo web. Nelle esperienze professionali ho intrapreso questa direzione per poi consolidarla attraverso un percorso formativo fullstack. Metodo progettuale e sensibilità visiva accompagnano oggi il mio lavoro da sviluppatore.
+                        {introText}
                     </p>
                 </div>
                 <div className="col-span-4">

@@ -1,3 +1,8 @@
+// const introText = "Formazione artistica ed esperienza nel graphic design sono all'origine del mio orientamento allo sviluppo web. Ho intrapreso questa direzione nel corso delle mie esperienze professionali, per poi consolidarla attraverso un percorso formativo fullstack. Metodo progettuale e sensibilità visiva accompagnano oggi il mio lavoro da sviluppatore.";
+const introText = `
+Nei progetti di graphic design prendono forma le mie prime competenze nello sviluppo web, poi coltivate nelle esperienze professionali e consolidate attraverso un percorso formativo fullstack. Metodo progettuale e sensibilità visiva accompagnano oggi il mio lavoro da sviluppatore.
+`;
+
 // tutte le immagini delle gallery, importate da Vite (percorso → url finale)
 const images = import.meta.glob("../assets/odon-airoldi-*.webp", { eager: true, import: "default" })
 
@@ -226,4 +231,4 @@ const work = [
     },
 ]
 
-export { stack, formazione, esperienza, work }
+export { introText, stack, formazione, esperienza, work }

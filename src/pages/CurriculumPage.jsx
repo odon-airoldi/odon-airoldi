@@ -1,12 +1,7 @@
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { stack, formazione, esperienza, work } from "../data/data"
+import { introText, stack, formazione, esperienza, work } from "../data/data"
 import AppList from "../components/AppList";
-
-// const introText = "Formazione artistica ed esperienza nel graphic design sono all'origine del mio orientamento allo sviluppo web. Ho intrapreso questa direzione nel corso delle mie esperienze professionali, per poi consolidarla attraverso un percorso formativo fullstack. Metodo progettuale e sensibilità visiva accompagnano oggi il mio lavoro da sviluppatore.";
-const introText = "Nei progetti di graphic design nasce il mio orientamento allo sviluppo web. Nelle esperienze professionali ho intrapreso questa direzione per poi consolidarla attraverso un percorso formativo fullstack. Metodo progettuale e sensibilità visiva accompagnano oggi il mio lavoro da sviluppatore.";
-
 
 export default function CurriculumPage() {
 
