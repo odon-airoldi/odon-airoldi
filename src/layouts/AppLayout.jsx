@@ -12,7 +12,7 @@ gsap.registerPlugin(useGSAP);
 
 export default function AppLayout() {
 
-    const { showSplash } = useAppContext();
+    const { showSplash, works } = useAppContext();
     const { pathname } = useLocation();
     const layoutRef = useRef(null);
 
@@ -39,7 +39,7 @@ export default function AppLayout() {
         // toReveal ritorna la funzione che scollega il suo IntersectionObserver:
         // ritornata qui, useGSAP la chiama al cambio pagina insieme al revert
         return toReveal();
-    }, { scope: layoutRef, dependencies: [showSplash, pathname] });
+    }, { scope: layoutRef, dependencies: [showSplash, pathname, works] });
 
     return (
         <div ref={layoutRef} className="bg-zinc-950 text-zinc-200 font-zalando font-stretch-[117.5%] relative min-h-svh">

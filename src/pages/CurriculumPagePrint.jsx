@@ -1,9 +1,13 @@
 
 import { Link } from "react-router-dom";
-import { introText, stack, formazione, esperienza, work } from "../data/data"
+import { introText, stack, education, experience } from "../data/data"
+import { useAppContext } from "../contexts/AppContext"
 import odonAiroldiCv from "../assets/odon-airoldi-cv.jpg"
 
+
 export default function CurriculumPagePrint() {
+
+    const { works } = useAppContext();
 
     return (
         <div className="h-[297mm] p-[8pt] relative bg-white text-black font-zalando font-stretch-[117.5%]">
@@ -75,15 +79,17 @@ export default function CurriculumPagePrint() {
                     </div>
                     <ul className="text-[6pt] tracking-widest grid gap-y-[4pt]">
                         {
-                            formazione.map((item) => (
+                            education.map((item) => (
                                 <li key={item.id}>
-                                    <span className="inline-block -translate-x-full">{item.title}</span>
+                                    <span className="inline-block -translate-x-full">{item.organization}</span>
                                     <ul>
                                         {
-                                            item.items.map((voce) => (
-                                                <li key={voce}>{voce}</li>
+                                            item.focus.map((focus) => (
+                                                <li key={focus}>{focus}</li>
                                             ))
                                         }
+                                        <li>{item.location}</li>
+                                        <li>{item.year_start === item.year_end ? item.year_start : `${item.year_start} ${item.year_end}`}</li>
                                     </ul>
                                 </li>
                             ))
@@ -97,15 +103,17 @@ export default function CurriculumPagePrint() {
                     </div>
                     <ul className="text-[6pt] tracking-widest grid gap-y-[4pt]">
                         {
-                            esperienza.map((item) => (
+                            experience.map((item) => (
                                 <li key={item.id}>
-                                    <span className="inline-block -translate-x-full">{item.title}</span>
+                                    <span className="inline-block -translate-x-full">{item.organization}</span>
                                     <ul>
                                         {
-                                            item.items.map((voce) => (
-                                                <li key={voce}>{voce}</li>
+                                            item.focus.map((focus) => (
+                                                <li key={focus}>{focus}</li>
                                             ))
                                         }
+                                        <li>{item.location}</li>
+                                        <li>{item.year_start === item.year_end ? item.year_start : `${item.year_start} ${item.year_end}`}</li>
                                     </ul>
                                 </li>
                             ))
@@ -118,13 +126,14 @@ export default function CurriculumPagePrint() {
                     </div>
                     <ul className="text-[6pt] tracking-widest grid gap-y-[4pt]">
                         {
-                            stack.map((item) => (
-                                <li key={item.id}>
-                                    <span className="inline-block -translate-x-full">{item.title}</span>
+                            // stack è piatto: raggruppato per type come in AppList
+                            Object.entries(Object.groupBy(stack, (item) => item.type)).map(([group, items]) => (
+                                <li key={group}>
+                                    <span className="inline-block -translate-x-full capitalize">{group}</span>
                                     <ul>
                                         {
-                                            item.items.map((voce) => (
-                                                <li key={voce}>{voce}</li>
+                                            items.map((item) => (
+                                                <li key={item.id}>{item.title}</li>
                                             ))
                                         }
                                     </ul>
@@ -139,20 +148,19 @@ export default function CurriculumPagePrint() {
                     </div>
                     <ul className="text-[6pt] tracking-widest grid gap-y-[4pt]">
                         {
-                            work
-                                .filter((item) => item.title === "Website")
-                                .map((item) => (
-                                    <li key={item.id}>
-                                        <span className="inline-block -translate-x-full">{item.title}</span>
-                                        <ul>
-                                            {
-                                                item.items.map((voce) => (
-                                                    <li key={voce.title}><Link to={voce.url}>{voce.title}</Link></li>
-                                                ))
-                                            }
-                                        </ul>
-                                    </li>
-                                ))
+                            // solo i website, con il link al sito: i graphic rimandano al portfolio qui sotto
+                            <li>
+                                <span className="inline-block -translate-x-full">Website</span>
+                                <ul>
+                                    {
+                                        works
+                                            ?.filter((item) => item.type === "website")
+                                            .map((item) => (
+                                                <li key={item.slug}><Link to={item.url}>{item.title}</Link></li>
+                                            ))
+                                    }
+                                </ul>
+                            </li>
                         }
                         <li>
                             <span className="inline-block -translate-x-full">Graphic</span>

@@ -1,9 +1,13 @@
 
 import { useState } from "react";
-import { introText, stack, formazione, esperienza, work } from "../data/data"
+import { introText, stack, education, experience } from "../data/data"
 import AppList from "../components/AppList";
+import { useAppContext } from "../contexts/AppContext"
+
 
 export default function CurriculumPage() {
+
+    const { works } = useAppContext();
 
     // apre il pdf in una nuova scheda, nel lettore pdf del browser. Il file
     // sta in public/ (indirizzo fisso): quando il cv cambia va riesportato lì
@@ -66,25 +70,25 @@ export default function CurriculumPage() {
                     <div className="alive overflow-hidden">
                         <div className="word-reveal border-t border-zinc-200 pt-2 text-xs sm:text-sm xl:text-base font-extralight leading-none tracking-wide uppercase mb-4">Formazione</div>
                     </div>
-                    <AppList list={formazione} />
+                    <AppList list={education} groupBy="organization" />
                 </div>
                 <div className="col-span-6 col-start-7 md:col-span-4">
                     <div className="alive overflow-hidden">
                         <div className="word-reveal border-t border-zinc-200 pt-2 text-xs sm:text-sm xl:text-base font-extralight leading-none tracking-wide uppercase mb-4">Esperienza</div>
                     </div>
-                    <AppList list={esperienza} />
+                    <AppList list={experience} groupBy="organization" />
                 </div>
                 <div className="col-span-6 col-start-7 md:col-span-4 md:col-start-5">
                     <div className="alive overflow-hidden">
                         <div className="word-reveal border-t border-zinc-200 pt-2 text-xs sm:text-sm xl:text-base font-extralight leading-none tracking-wide uppercase mb-4">Stack</div>
                     </div>
-                    <AppList list={stack} />
+                    <AppList list={stack} groupBy="type" />
                 </div>
                 <div className="col-span-6 col-start-7 md:col-span-4">
                     <div className="alive overflow-hidden">
                         <div className="word-reveal border-t border-zinc-200 pt-2 text-xs sm:text-sm xl:text-base font-extralight leading-none tracking-wide uppercase mb-4">Work</div>
                     </div>
-                    <AppList list={work} />
+                    <AppList list={works} groupBy="type" />
                 </div>
             </div>
 

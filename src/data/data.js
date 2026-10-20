@@ -3,232 +3,205 @@ const introText = `
 Nei progetti di graphic design prendono forma le mie prime competenze nello sviluppo web, poi coltivate nelle esperienze professionali e consolidate attraverso un percorso formativo fullstack. Metodo progettuale e sensibilità visiva accompagnano oggi il mio lavoro da sviluppatore.
 `;
 
-// tutte le immagini delle gallery, importate da Vite (percorso → url finale)
-const images = import.meta.glob("../assets/odon-airoldi-*.webp", { eager: true, import: "default" })
-
-// immagini di un progetto, in ordine: gallery("le-corne") → odon-airoldi-le-corne-01, -02, ...
-const gallery = (slug) => Object.keys(images)
-    .filter((path) => new RegExp(`/odon-airoldi-${slug}-\\d+\\.webp$`).test(path))
-    .sort()
-    .map((path) => images[path])
-
 const stack = [
     {
         id: 1,
-        title: "Frontend",
-        items: ["HTML", "CSS", "JavaScript", "React", "Tailwind", "Bootstrap", "Vite"]
+        type: "frontend",
+        title: "HTML"
     },
     {
         id: 2,
-        title: "Backend",
-        items: ["Node", "Express", "PHP", "Laravel", "REST API"]
+        type: "frontend",
+        title: "CSS"
     },
     {
         id: 3,
-        title: "Database",
-        items: ["MySql", "SQlite"]
+        type: "frontend",
+        title: "JavaScript"
     },
     {
         id: 4,
-        title: "Cms",
-        items: ["Wordpress", "WooCommerce", "NopCommerce"]
+        type: "frontend",
+        title: "React"
     },
     {
         id: 5,
-        title: "Tool",
-        items: ["Git", "GitHub", "Npm", "FTP"]
+        type: "frontend",
+        title: "Tailwind"
     },
     {
         id: 6,
-        title: "Design",
-        items: ["Illustrator", "InDesign", "Photoshop"]
+        type: "frontend",
+        title: "Bootstrap"
     },
+    {
+        id: 7,
+        type: "frontend",
+        title: "Vite"
+    },
+    {
+        id: 8,
+        type: "backend",
+        title: "Node"
+    },
+    {
+        id: 9,
+        type: "backend",
+        title: "Express"
+    },
+    {
+        id: 10,
+        type: "backend",
+        title: "PHP"
+    },
+    {
+        id: 11,
+        type: "backend",
+        title: "Laravel"
+    },
+    {
+        id: 12,
+        type: "backend",
+        title: "REST API"
+    },
+    {
+        id: 13,
+        type: "database",
+        title: "MySql"
+    },
+    {
+        id: 14,
+        type: "database",
+        title: "SQlite"
+    },
+    {
+        id: 15,
+        type: "cms",
+        title: "Wordpress"
+    },
+    {
+        id: 16,
+        type: "cms",
+        title: "WooCommerce"
+    },
+    {
+        id: 17,
+        type: "cms",
+        title: "NopCommerce"
+    },
+    {
+        id: 18,
+        type: "tool",
+        title: "Git"
+    },
+    {
+        id: 19,
+        type: "tool",
+        title: "GitHub"
+    },
+    {
+        id: 20,
+        type: "tool",
+        title: "Npm"
+    },
+    {
+        id: 21,
+        type: "tool",
+        title: "FTP"
+    },
+    {
+        id: 22,
+        type: "design",
+        title: "Illustrator"
+    },
+    {
+        id: 23,
+        type: "design",
+        title: "InDesign"
+    },
+    {
+        id: 24,
+        type: "design",
+        title: "Photoshop"
+    }
 ]
 
-const formazione = [
+const education = [
     {
         id: 1,
-        title: "Boolean",
-        items: ["Web Development", "Online", "2026"]
+        organization: "Boolean",
+        focus: ["Web Development"],
+        location: "Online",
+        year_start: 2026,
+        year_end: 2026
     },
     {
         id: 2,
-        title: "Isgmd Design Academy",
-        items: ["Graphic Design", "Lecco", "2010 2012"]
+        organization: "Isgmd Design Academy",
+        focus: ["Graphic Design"],
+        location: "Lecco",
+        year_start: 2010,
+        year_end: 2012
     },
     {
         id: 3,
-        title: "Accademia di Brera",
-        items: ["Scultura", "Milano", "2007 2009"]
+        organization: "Accademia di Brera",
+        focus: ["Scultura"],
+        location: "Milano",
+        year_start: 2007,
+        year_end: 2009
     },
     {
         id: 4,
-        title: "Liceo Artistico",
-        items: ["Architettura", "Lecco", "2002 2006"]
+        organization: "Liceo Artistico",
+        focus: ["Architettura"],
+        location: "Lecco",
+        year_start: 2002,
+        year_end: 2006
     },
 ]
 
-const esperienza = [
+const experience = [
     {
         id: 1,
-        title: "Agostani Caffè",
-        items: ["Graphic designer", "Frontend developer", "Molteno", "2022 2025"]
+        organization: "Agostani Caffè",
+        focus: ["Graphic designer", "Frontend developer"],
+        location: "Molteno",
+        year_start: 2022,
+        year_end: 2025
     },
     {
         id: 2,
-        title: "Studiolabo",
-        items: ["Frontend developer", "Milano", "2020 2022"]
+        organization: "Studiolabo",
+        focus: ["Frontend developer"],
+        location: "Milano",
+        year_start: 2020,
+        year_end: 2022
     },
     {
         id: 3,
-        title: "Ardesia Studio",
-        items: ["Co Founder", "Graphic Designer", "Bergamo", "2014 2019"]
+        organization: "Ardesia Studio",
+        focus: ["Co founder", "Graphic designer"],
+        location: "Bergamo",
+        year_start: 2014,
+        year_end: 2019
     },
     {
         id: 4,
-        title: "Office Milano",
-        items: ["Graphic Designer", "Milano", "2012"]
+        organization: "Office Milano",
+        focus: ["Graphic designer"],
+        location: "Milano",
+        year_start: 2012,
+        year_end: 2012
     },
     {
         id: 5,
-        title: "Oikos",
-        items: ["Graphic Designer", "Monza", "2011"]
+        organization: "Oikos",
+        focus: ["Graphic designer"],
+        location: "Monza",
+        year_start: 2011,
+        year_end: 2011
     },
 ]
 
-const work = [
-    {
-        id: 1,
-        title: "Website",
-        items: [
-            {
-                id: 1,
-                title: "Tuttocialde",
-                description: `
-                Redesign UI di un e-commerce basato su nopCommerce. Ho sviluppato i template frontend in HTML e CSS e li ho integrati nelle view Razor della piattaforma, adattando il layout ai componenti nativi di catalogo, carrello e checkout.
-                `,
-                url_text: "www.tuttocialde.it",
-                url: "https://www.tuttocialde.it"
-            },
-            {
-                id: 2,
-                title: "Caffè Agostani",
-                description: `
-                Sviluppo frontend da zero di un e-commerce su nopCommerce. Ho convertito il design in template HTML e CSS responsive e li ho integrati nelle view Razor, collegandoli ai componenti e ai dati gestiti dalla piattaforma.        `,
-                url_text: "www.caffeagostani.com",
-                url: "https://www.caffeagostani.com"
-            },
-            {
-                id: 3,
-                title: "Run Club",
-                description: `
-                Applicazione full stack con frontend in React e backend in Laravel, comunicanti tramite API RESTful.Ho implementato l'autenticazione degli utenti con Laravel Sanctum, progettato lo schema relazionale su MySQL e gestito migrazioni e relazioni tra entità con Eloquent ORM, strutturando gli endpoint secondo un'architettura MVC.
-                `,
-                url_text: "Repo on Github",
-                url: "https://github.com/odon-airoldi/run-club-api"
-            },
-            {
-                id: 4,
-                title: "Geomont",
-                description: `
-                Sito corporate su WordPress con tema custom sviluppato da zero. Ho strutturato i template secondo la template hierarchy di WordPress e implementato in JavaScript un layout a griglia dinamico per la presentazione grafica dei contenuti.
-                `,
-                url_text: "www.geomont.com",
-                url: "https://www.geomont.com"
-            },
-            {
-                id: 5,
-                title: "Essense Magazine",
-                description: `
-                Portale editoriale su WordPress con tema custom sviluppato da zero. Ho implementato i template per articoli, categorie e archivi secondo la template hierarchy, ottimizzando la presentazione dei contenuti e l'integrazione con il flusso editoriale del CMS.
-                `,
-                url_text: "essense-magazine.com",
-                url: "https://essense-magazine.com"
-            },
-            {
-                id: 6,
-                title: "Studio Lops",
-                description: `
-                Sito per uno studio fotografico su WordPress con tema custom sviluppato da zero. Ho realizzato template dedicati alla presentazione di gallerie e contenuti visivi, con layout responsive e gestione delle immagini integrata nel CMS.
-                `,
-                url_text: "www.studiofotograficolops.it",
-                url: "https://www.studiofotograficolops.it"
-            },
-            {
-                id: 7,
-                title: "Swiss R&D SA",
-                description: `
-                Sito corporate per una società svizzera. Ho trasposto il progetto grafico in pagine PHP con template fedeli al design, sviluppando un layout responsive che mantiene leggibilità e coerenza visiva.
-                `,
-                url_text: "www.swiss-redsa.ch",
-                url: "https://swiss-redsa.ch"
-            }
-        ]
-    },
-    {
-        id: 2,
-        title: "Graphic",
-        items: [
-            {
-                id: 11,
-                title: "Tenuta Casa Virginia",
-                description: "",
-                gallery: gallery("tenuta-casa-virginia")
-            },
-            {
-                id: 12,
-                title: "Le Corne",
-                description: "",
-                gallery: gallery("le-corne")
-            },
-            {
-                id: 13,
-                title: "Nove Lune",
-                description: "",
-                gallery: gallery("nove-lune")
-            },
-            {
-                id: 14,
-                title: "EB Arredamenti",
-                description: "",
-                gallery: gallery("eb-arredamenti")
-            },
-            {
-                id: 15,
-                title: "Formenti MR",
-                description: "",
-                gallery: gallery("formenti")
-            },
-            {
-                id: 16,
-                title: "J-Val",
-                description: "",
-                gallery: gallery("jval")
-            },
-            {
-                id: 17,
-                title: "Mgs Thermal",
-                description: "",
-                gallery: gallery("mgs")
-            },
-            // {
-            //     id: 14,
-            //     title: "Bergamo Sposi",
-            //     description: "description 4",
-            //     gallery: [
-
-            //     ]
-            // },
-            // {
-            //     id: 15,
-            //     title: "Ca Alta",
-            //     description: "description 5",
-            //     gallery: [
-
-            //     ]
-            // },
-        ]
-    },
-]
-
-export { introText, stack, formazione, esperienza, work }
+export { introText, stack, education, experience }

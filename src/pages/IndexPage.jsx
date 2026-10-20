@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom"
 import { useState } from "react"
-import { stack, work } from "../data/data"
+import { stack } from "../data/data"
 import AppList from "../components/AppList"
+import { useAppContext } from "../contexts/AppContext"
 
 export default function IndexPage() {
+
+    const { works } = useAppContext();
 
     const [copied, setCopied] = useState(false)
 
@@ -29,13 +32,13 @@ export default function IndexPage() {
                     <div className="alive text-xs md:text-sm xl:text-base font-extralight word-spacing-[.5em] leading-none tracking-wide uppercase overflow-hidden mb-4">
                         <span className="word-reveal block">Stack</span>
                     </div>
-                    <AppList list={stack} />
+                    <AppList list={stack} groupBy="type" />
                 </div>
                 <div className="sm:col-span-3 md:col-span-2 max-sm:hidden">
                     <div className="alive text-xs md:text-sm xl:text-base font-extralight word-spacing-[.5em] leading-none tracking-wide uppercase overflow-hidden mb-4">
                         <span className="word-reveal block">Work</span>
                     </div>
-                    <AppList list={work} />
+                    <AppList list={works} groupBy="type" />
                 </div>
                 <div className="col-span-12 sm:col-span-2 md:col-span-2">
                     <Link className="alive text-xs md:text-sm xl:text-base font-extralight word-spacing-[.5em] max-sm:text-[6vw] leading-none tracking-wide uppercase overflow-hidden hover:text-zinc-50" to="/cv">

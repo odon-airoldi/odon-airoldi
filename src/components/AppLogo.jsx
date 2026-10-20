@@ -19,14 +19,15 @@ const STEP_GAP = .4;       // pausa tra un passo e l'altro
 const ANIMATIONS = {
 
     // splash: il logo si forma in 4 passi, con il nome che cambia insieme
-    splash({ showName, onComplete }) {
+    splash({ showName, onFormed }) {
         // partenza: barra in alto e centro della base una unità più in basso
         gsap.set(".item_t, .item_b", { top: "+=25%" });
 
         const tl = gsap.timeline({
             delay: START_DELAY,
             defaults: { duration: STEP_DURATION, ease: "power4.in" },
-            onComplete() { onComplete?.(); },
+            // onComplete: opzione di GSAP, a fine timeline chiama la prop onFormed (se passata)
+            onComplete() { onFormed?.(); },
         });
 
         // passo 1: tutto tranne la base sale di una unità
@@ -82,8 +83,8 @@ const ANIMATIONS = {
 
 // variant: quale animazione usare, "splash" | "intro" | "scroll"
 // showName: mostra sotto il logo il nome, che cambia insieme ai passi della splash
-// onComplete: chiamata a logo formato nella splash, per sapere quando chiudersi
-export default function AppLogo({ variant = "splash", showName = false, onComplete }) {
+// onFormed: chiamata a logo formato nella splash, per sapere quando chiudersi
+export default function AppLogo({ variant = "splash", showName = false, onFormed }) {
     const logoRef = useRef(null);
     const { showSplash } = useAppContext();
 
@@ -97,7 +98,7 @@ export default function AppLogo({ variant = "splash", showName = false, onComple
             gsap.set(".name_full", { yPercent: variant === "splash" ? -100 : 0 });
         }
 
-        ANIMATIONS[variant]({ showName, onComplete, showSplash });
+        ANIMATIONS[variant]({ showName, onFormed, showSplash });
     }, { scope: logoRef, dependencies: [variant, showName, showSplash], revertOnUpdate: true });
 
     return (
