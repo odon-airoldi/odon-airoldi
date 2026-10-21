@@ -20,7 +20,7 @@ export default function CurriculumPagePrint() {
                     <div className="text-[32pt] leading-[.8] font-extralight tracking-tighter uppercase">
                         <h1 className="flex justify-between"><span>Odon</span> <span>Airoldi</span></h1>
                         <h2 className="flex justify-between"><span>fullstack</span> <span>developer</span></h2>
-                        <h3 className="flex justify-between"><span>from graphic</span> <span>design</span></h3>
+                        <h3 className="flex justify-between"><span>design</span> <span>minded</span></h3>
                     </div>
                 </header>
                 <div className="col-span-12">

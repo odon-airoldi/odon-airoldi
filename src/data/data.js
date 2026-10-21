@@ -1,6 +1,6 @@
-// const introText = "Formazione artistica ed esperienza nel graphic design sono all'origine del mio orientamento allo sviluppo web. Ho intrapreso questa direzione nel corso delle mie esperienze professionali, per poi consolidarla attraverso un percorso formativo fullstack. Metodo progettuale e sensibilità visiva accompagnano oggi il mio lavoro da sviluppatore.";
+// Nei progetti di graphic design prendono forma le mie prime competenze nello sviluppo web, poi coltivate nelle esperienze professionali e consolidate attraverso un percorso formativo fullstack. Metodo progettuale e sensibilità visiva accompagnano oggi il mio lavoro da sviluppatore.
 const introText = `
-Nei progetti di graphic design prendono forma le mie prime competenze nello sviluppo web, poi coltivate nelle esperienze professionali e consolidate attraverso un percorso formativo fullstack. Metodo progettuale e sensibilità visiva accompagnano oggi il mio lavoro da sviluppatore.
+Web developer con un background nel graphic design. Competenze sviluppate nelle esperienze professionali e consolidate con un percorso formativo fullstack. Il design mi permette di guardare un progetto da due punti di vista, come funziona e come si vede.
 `;
 
 const stack = [
@@ -165,7 +165,7 @@ const experience = [
     {
         id: 1,
         organization: "Agostani Caffè",
-        focus: ["Graphic designer", "Frontend developer"],
+        focus: ["Frontend developer", "Graphic designer"],
         location: "Molteno",
         year_start: 2022,
         year_end: 2025

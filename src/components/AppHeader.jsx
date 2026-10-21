@@ -18,7 +18,7 @@ export default function AppHeader() {
                         {pathname === "/" &&
                             <>
                                 <h2 className="alive flex justify-between overflow-hidden"><span className="word-reveal">fullstack</span> <span className="word-reveal">developer</span></h2>
-                                <h3 className="alive flex justify-between overflow-hidden gap-x-[.25em]"><span className="word-reveal">from</span> <span className="word-reveal">graphic</span> <span className="word-reveal ms-auto">design</span></h3>
+                                <h3 className="alive flex justify-between overflow-hidden gap-x-[.25em]"><span className="word-reveal">design</span> <span className="word-reveal ms-auto">minded</span></h3>
                             </>
                         }
 
