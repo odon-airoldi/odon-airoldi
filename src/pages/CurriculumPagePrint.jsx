@@ -122,7 +122,7 @@ export default function CurriculumPagePrint() {
                 </div>
                 <div className="col-span-4 col-start-5 mt-[6pt]">
                     <div className="text-[8pt] font-light leading-none tracking-wide uppercase border-t border-black pt-[4pt] mb-[6pt]">
-                        Stack
+                        Core stack
                     </div>
                     <ul className="text-[6pt] tracking-widest grid gap-y-[4pt]">
                         {
@@ -144,7 +144,7 @@ export default function CurriculumPagePrint() {
                 </div>
                 <div className="col-span-4 mt-[6pt] relative">
                     <div className="text-[8pt] font-light leading-none tracking-wide uppercase border-t border-black pt-[4pt] mb-[6pt]">
-                        Work
+                        Selected works
                     </div>
                     <ul className="text-[6pt] tracking-widest grid gap-y-[4pt]">
                         {

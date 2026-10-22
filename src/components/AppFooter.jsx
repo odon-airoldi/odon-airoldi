@@ -37,7 +37,7 @@ export default function AppFooter() {
                 </div>
             </div>
 
-            <div className="absolute bottom-4 right-4 hidden">
+            {/* <div className="absolute bottom-4 right-4">
                 <div className="flex gap-[16px] w-full justify-center">
                     <div className="aspect-2/1 w-[64px] relative x">
                         <div className="bg-zinc-200 absolute h-1/4 w-1/8 left-0/0 top-0/4 2"></div>
@@ -124,7 +124,7 @@ export default function AppFooter() {
                         <div className="bg-zinc-200 absolute h-1/4 w-2/8 left-6/8 top-3/4"></div>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
         </footer>
     )
