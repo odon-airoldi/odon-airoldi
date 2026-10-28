@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom"
-import { useState } from "react"
-import { stack } from "../data/data"
+import { stack, education, experience } from "../data/data"
 import AppList from "../components/AppList"
 import { useAppContext } from "../contexts/AppContext"
 
@@ -8,47 +7,43 @@ export default function IndexPage() {
 
     const { works } = useAppContext();
 
-    const [copied, setCopied] = useState(false)
-
-    const handleCopyEmail = async () => {
-        try {
-            await navigator.clipboard.writeText('odon.airoldi@gmail.com')
-            setCopied(true)
-            setTimeout(() => setCopied(false), 2000)
-        } catch { }
-    }
-
     return (
 
-        <div className="py-4">
+        <div className="py-[10vw]">
 
-            <div className="grid grid-cols-12 gap-x-2 xl:gap-x-4">
-                <div className="md:col-span-4 max-sm:hidden">
-                    <div className="alive text-xs md:text-sm xl:text-base font-extralight word-spacing-[.5em] leading-none tracking-wide uppercase overflow-hidden">
-                        <span className="word-reveal block">O<span className="max-md:hidden">don</span> A<span className="max-md:hidden">iroldi</span></span>
-                    </div>
+            <div className="grid grid-cols-12 gap-y-[10vw]">
+
+                <div id="about" className="col-span-12">
+                    <p className="alive text-base sm:text-[2vw] font-extralight uppercase leading-none">
+                        <span className="overflow-hidden"><span className="word-reveal block">Web developer con un background nel graphic design.</span></span>
+                        <span className="overflow-hidden"><span className="word-reveal block">Competenze sviluppate nelle esperienze professionali e consolidate con un percorso formativo fullstack.</span></span>
+                        <span className="overflow-hidden"><span className="word-reveal block">Oggi seguo ogni progetto da due punti di vista, come funziona e come si vede.</span></span>
+                    </p>
                 </div>
-                <div className="sm:col-span-3 md:col-span-2 sm:col-start-3 max-sm:hidden">
-                    <div className="alive text-xs md:text-sm xl:text-base font-extralight word-spacing-[.5em] leading-none tracking-wide uppercase overflow-hidden mb-4">
+
+                <div className="col-span-6 col-start-7 md:col-span-4 md:col-start-5">
+                    <div className="alive text-xs md:text-sm xl:text-base font-stretch-[125%] font-extralight word-spacing-[.5em] leading-none tracking-wide uppercase overflow-hidden mb-4">
                         <span className="word-reveal block">Stack</span>
                     </div>
                     <AppList list={stack} groupBy="type" />
                 </div>
-                <div className="sm:col-span-3 md:col-span-2 max-sm:hidden">
-                    <div className="alive text-xs md:text-sm xl:text-base font-extralight word-spacing-[.5em] leading-none tracking-wide uppercase overflow-hidden mb-4">
+                <div className="col-span-6 col-start-7 md:col-span-4">
+                    <div className="alive text-xs md:text-sm xl:text-base font-stretch-[125%] font-extralight word-spacing-[.5em] leading-none tracking-wide uppercase overflow-hidden mb-4">
                         <span className="word-reveal block">Work</span>
                     </div>
                     <AppList list={works} groupBy="type" />
                 </div>
-                <div className="col-span-12 sm:col-span-2 md:col-span-2">
-                    <Link className="alive text-xs md:text-sm xl:text-base font-extralight word-spacing-[.5em] max-sm:text-[6vw] leading-none tracking-wide uppercase overflow-hidden hover:text-zinc-50" to="/cv">
-                        <span className="word-reveal block max-sm:flex max-sm:justify-end"><span>C V</span></span>
-                    </Link>
+                <div className="col-span-6 col-start-7 md:col-span-4 md:col-start-5">
+                    <div className="alive text-xs md:text-sm xl:text-base font-stretch-[125%] font-extralight word-spacing-[.5em] leading-none tracking-wide uppercase overflow-hidden mb-4">
+                        <span className="word-reveal block">Formazione</span>
+                    </div>
+                    <AppList list={education} groupBy="organization" />
                 </div>
-                <div className="sm:col-span-2 md:col-span-2 max-sm:hidden">
-                    <button className="alive text-xs md:text-sm xl:text-base font-extralight word-spacing-[.5em] leading-none tracking-wide uppercase overflow-hidden cursor-pointer block w-full text-left hover:text-zinc-50" type="button" onClick={handleCopyEmail}>
-                        <span className="word-reveal block">{copied ? "Email copied" : "Email me"}</span>
-                    </button>
+                <div className="col-span-6 col-start-7 md:col-span-4">
+                    <div className="alive text-xs md:text-sm xl:text-base font-stretch-[125%] font-extralight word-spacing-[.5em] leading-none tracking-wide uppercase overflow-hidden mb-4">
+                        <span className="word-reveal block">Esperienza</span>
+                    </div>
+                    <AppList list={experience} groupBy="organization" />
                 </div>
             </div>
         </div >

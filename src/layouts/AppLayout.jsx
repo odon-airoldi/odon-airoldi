@@ -12,7 +12,7 @@ gsap.registerPlugin(useGSAP);
 
 export default function AppLayout() {
 
-    const { showSplash, works } = useAppContext();
+    const { works } = useAppContext();
     const { pathname } = useLocation();
     const layoutRef = useRef(null);
 
@@ -25,31 +25,23 @@ export default function AppLayout() {
     // figli: la pagina appena montata è già nel DOM quando qui si cercano gli
     // elementi. pathname fa ripartire tutto a ogni cambio pagina (il layout
     // non si rismonta), e useGSAP annulla prima le animazioni della pagina
-    // precedente.
-    // Gli stati di partenza si impostano subito e restano per tutta la
-    // splash, così quando l'animazione parte non c'è nessun salto. Finché la
-    // splash è a schermo non parte nulla: gli elementi già nel viewport
-    // partirebbero subito, e l'animazione finirebbe (invisibile) dietro la
-    // splash stessa
+    // precedente. works la fa ripartire quando arrivano i lavori dall'API
     useGSAP(() => {
         setReveal();
-
-        if (showSplash) return;
 
         // toReveal ritorna la funzione che scollega il suo IntersectionObserver:
         // ritornata qui, useGSAP la chiama al cambio pagina insieme al revert
         return toReveal();
-    }, { scope: layoutRef, dependencies: [showSplash, pathname, works] });
+    }, { scope: layoutRef, dependencies: [pathname, works] });
 
     return (
         <div ref={layoutRef} className="bg-zinc-950 text-zinc-200 font-zalando font-stretch-[117.5%] relative min-h-svh">
 
             <AppHeader />
-            <div className="overflow-hidden px-2 sm:px-4">
+            <div className="overflow-hidden px-2">
                 <Outlet />
             </div>
             <AppFooter />
-
 
         </div>
     )

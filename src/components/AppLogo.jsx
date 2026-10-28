@@ -1,10 +1,9 @@
 import { gsap } from "gsap"
 import { useGSAP } from "@gsap/react"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useRef } from "react"
 import { useAppContext } from "../contexts/AppContext"
 
-gsap.registerPlugin(useGSAP, ScrollTrigger)
+gsap.registerPlugin(useGSAP)
 
 // tempi in secondi
 const START_DELAY = .2;     // attesa prima del primo passo
@@ -68,20 +67,9 @@ const ANIMATIONS = {
             ease: "power3.inOut",
         });
     },
-
-    // scroll (cv): parte dal logo formato e, scorrendo verso il basso, barra in
-    // alto e centro della base scendono di una unità in proporzione a quanto si
-    // è scrollato (da inizio a fine pagina). Risalendo il movimento si inverte
-    scroll() {
-        gsap.to(".item_t, .item_b", {
-            top: "+=25%",
-            ease: "none",
-            scrollTrigger: { start: 0, end: "max", scrub: true },
-        });
-    },
 };
 
-// variant: quale animazione usare, "splash" | "intro" | "scroll"
+// variant: quale animazione usare, "splash" | "intro"
 // showName: mostra sotto il logo il nome, che cambia insieme ai passi della splash
 // onFormed: chiamata a logo formato nella splash, per sapere quando chiudersi
 export default function AppLogo({ variant = "splash", showName = false, onFormed }) {
