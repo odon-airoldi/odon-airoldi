@@ -1,6 +1,15 @@
 @import "tailwindcss";
 @import "@fontsource-variable/zalando-sans/wdth.css";
 
+:root {
+    /* geometrie nella testata: altezza di un box aperto (3 box in 4:1 sulla larghezza
+       della pagina, meno p-2 ai lati e gap-2 tra i box: 2rem in tutto) e del blocco
+       intero (box + p-2 sopra e sotto). --squash (da 0 a 1) lo anima GSAP con lo scroll */
+    --geo-box: calc((100vw - 2rem) / 12);
+    --geo-height: calc(var(--geo-box) + 1rem);
+    --squash: 0;
+}
+
 .font-zalando {
     font-family: 'Zalando Sans Variable', sans-serif;
 }

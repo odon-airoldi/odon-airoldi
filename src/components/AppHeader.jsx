@@ -1,9 +1,11 @@
 import { Link, useLocation } from "react-router-dom"
-import { useState, useEffect, useLayoutEffect, useRef } from "react"
+import { useState, useEffect, useRef } from "react"
 import { gsap } from "gsap"
+import { useGSAP } from "@gsap/react"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { ScrollToPlugin } from "gsap/ScrollToPlugin"
 
-gsap.registerPlugin(ScrollToPlugin)
+gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin)
 
 // due testi sovrapposti nella stessa cella (grid): con show il secondario sale dal
 // basso e il primario esce salendo; tornando indietro fanno il percorso inverso.
@@ -22,65 +24,45 @@ export default function AppHeader() {
 
     const { pathname } = useLocation();
 
-    // geometrie al centro e menu in fondo al primo schermo; scrollando le geometrie
-    // si ancorano in cima, il menu sale e quando le raggiunge le schiaccia insieme
-    // allo scroll (squash: 0 aperte, 1 alte la metà) restando agganciato sotto.
-    // Tutto si calcola in update(), a ogni scroll e resize
+    // posizioni iniziali e sticky sono tutte in CSS (variabili --geo-* in App.css):
+    // qui solo lo schiacciamento delle geometrie e il testo della voce About me
     const geoRef = useRef(null)
     const navRef = useRef(null)
-    const spacerRef = useRef(null)
-    const titleRef = useRef(null)
-    // true quando il testo di presentazione (#about) arriva sotto il menu
+
+    // spazio occupato in cima da geometrie e menu ancorati. Il blocco geometrie
+    // resta alto come da aperte anche quando i box si schiacciano
+    const stuckHeight = () => geoRef.current.offsetHeight + navRef.current.offsetHeight
+
+    // schiacciamento legato allo scroll (scrub): --squash va da 0 (aperte) a 1
+    // (box alti la metà). Parte quando il menu, in fondo al primo schermo, tocca le
+    // geometrie, cioè dopo aver scrollato altezza schermo - geometrie - menu, e dura
+    // quanto l'altezza delle geometrie: il menu le segue restando agganciato sotto
+    useGSAP(() => {
+        const start = () => window.innerHeight - stuckHeight()
+        gsap.to(document.documentElement, {
+            "--squash": 1,
+            ease: "none",
+            scrollTrigger: {
+                start,
+                end: () => start() + geoRef.current.offsetHeight,
+                scrub: true,
+                invalidateOnRefresh: true,
+            },
+        })
+    })
+
+    // true quando il testo di presentazione (#about) arriva sotto geometrie e menu
     const [aboutReached, setAboutReached] = useState(false)
 
-    // misure che non dipendono dallo scroll (cambiano solo con la larghezza)
-    const getSizes = () => {
-        const box = geoRef.current.querySelector(".geo-box")
-        // box aperto: largo 4 volte l'altezza (aspect 4/1)
-        const openBox = box.offsetWidth / 4
-        // padding del blocco geometrie (tutto tranne il box)
-        const padding = geoRef.current.offsetHeight - box.offsetHeight
-        return { openBox, padding, open: padding + openBox, nav: navRef.current.offsetHeight }
-    }
-
-    // useLayoutEffect: la prima volta gira prima che il browser disegni, senza salti
-    useLayoutEffect(() => {
-        const update = () => {
-            const { openBox, padding, open, nav } = getSizes()
-
-            // titolo alto mezzo schermo meno metà geometrie aperte: le centra
-            titleRef.current.style.height = `calc(50svh - ${open / 2}px)`
-
-            // posizione a schermo del menu se non fosse sticky: il fondo dello spazio
-            // qui sotto. Non cambia con lo schiacciamento, che lo spazio compensa
-            const natural = spacerRef.current.getBoundingClientRect().bottom
-            // quanto il menu è salito oltre le geometrie aperte, su quanto si
-            // schiacciano al massimo (metà box): da 0 a 1
-            const squash = gsap.utils.clamp(0, 1, (open - natural) / (openBox / 2))
-            const current = padding + openBox * (1 - squash / 2)
-
-            // i box leggono --squash nella loro altezza (vedi geoBoxClass)
-            geoRef.current.style.setProperty("--squash", squash)
-            // menu agganciato subito sotto le geometrie, qualunque sia la loro altezza
-            navRef.current.style.top = `${current}px`
-            // lo spazio cresce di quanto le geometrie si accorciano: menu e pagina
-            // sotto non si spostano mentre si schiacciano
-            spacerRef.current.style.height = `calc(50svh + ${open / 2 - nav - current}px)`
-
-            // Math.round: la posizione può avere decimali
+    useEffect(() => {
+        const check = () => {
             const about = document.getElementById("about")
-            setAboutReached(!!about && Math.round(about.getBoundingClientRect().top) <= Math.round(navRef.current.getBoundingClientRect().bottom))
+            // Math.round: la posizione può avere decimali
+            setAboutReached(!!about && Math.round(about.getBoundingClientRect().top) <= stuckHeight())
         }
-        // al montaggio e al resize due volte: la prima imposta titolo e spazio,
-        // la seconda calcola lo schiacciamento con le loro altezze già corrette
-        const updateTwice = () => { update(); update() }
-        updateTwice()
-        window.addEventListener("scroll", update)
-        window.addEventListener("resize", updateTwice)
-        return () => {
-            window.removeEventListener("scroll", update)
-            window.removeEventListener("resize", updateTwice)
-        }
+        check()
+        window.addEventListener("scroll", check)
+        return () => window.removeEventListener("scroll", check)
     }, [])
 
     // ora corrente (ore:minuti), aggiornata ogni secondo così il cambio di minuto è puntuale
@@ -113,13 +95,9 @@ export default function AppHeader() {
     // scorre fino al testo di presentazione (#about in IndexPage), fermandosi
     // sotto geometrie e menu ancorati in cima, che altrimenti lo coprirebbero
     const handleAboutMe = () => {
-        const about = document.getElementById("about")
-        // arrivati lì le geometrie sono schiacciate: alte padding + metà box
-        const { openBox, padding, nav } = getSizes()
-        const top = about.getBoundingClientRect().top + window.scrollY - (padding + openBox / 2) - nav
-        // lo smooth del browser ha una velocità fissa: con GSAP si sceglie la durata
         setAboutForced(true)
-        gsap.to(window, { scrollTo: top, duration: 1.5, ease: "power2.inOut", onComplete: () => setAboutForced(null) })
+        // lo smooth del browser ha una velocità fissa: con GSAP si sceglie la durata
+        gsap.to(window, { scrollTo: { y: "#about", offsetY: stuckHeight() }, duration: 1.5, ease: "power2.inOut", onComplete: () => setAboutForced(null) })
     }
 
     // torna in cima alla pagina, con la stessa durata di handleAboutMe
@@ -144,34 +122,35 @@ export default function AppHeader() {
         } catch { }
     }
 
-    // box delle geometrie: alto 1/4 della sua larghezza (3 box, gap-2 = 1rem in tutto),
-    // fino alla metà man mano che --squash va da 0 a 1. È un container (size): le barre verticali
-    // sono larghe 25cqh, 1/4 dell'altezza come le orizzontali (h-1/4), così lo
-    // spessore resta uguale in tutte le direzioni anche da schiacciate
-    const geoBoxClass = "geo-box relative [container-type:size] h-[calc((100cqw-1rem)/12*(1-var(--squash,0)/2))]"
+    // box delle geometrie: alto --geo-box, fino alla metà man mano che --squash va
+    // da 0 a 1. È un container (size): le barre verticali sono larghe 25cqh, 1/4
+    // dell'altezza come le orizzontali (h-1/4), così lo spessore resta uguale in
+    // tutte le direzioni anche da schiacciate
+    const geoBoxClass = "relative [container-type:size] h-[calc(var(--geo-box)*(1-var(--squash)/2))]"
 
     // le parole .word-reveal (dentro i genitori .alive) sono animate da AppLayout, insieme a quelle
     // della pagina, così partono tutte in un'unica successione
     return (
 
-        // contents: l'header non crea un suo box, quindi gli sticky qui sotto non restano
-        // chiusi in uno schermo ma valgono per tutto il layout, alto quanto la pagina
-        <header className="contents">
+        // l'header contiene solo il titolo. Geometrie e menu stanno fuori, direttamente
+        // nel layout (alto quanto la pagina): uno sticky dentro l'header, alto meno di
+        // uno schermo, si sgancerebbe appena l'header esce dallo schermo
+        <>
 
             {/* titolo: alto mezzo schermo meno metà geometrie, così le geometrie partono centrate */}
-            <div className="p-2" ref={titleRef}>
+            <header className="p-2 h-[calc(50svh-var(--geo-height)/2)]">
                 <div className="text-[6vw] lg:text-[4vw] leading-[.8] font-[450] tracking-tighter uppercase">
                     <h1 className="alive overflow-hidden"><span className="word-reveal inline-block">Odon</span> <span className="word-reveal inline-block">Airoldi</span></h1>
                     <h2 className="alive overflow-hidden"><span className="word-reveal inline-block">fullstack</span> <span className="word-reveal inline-block">developer</span></h2>
                     <h3 className="alive overflow-hidden"><span className="word-reveal inline-block">design</span> <span className="word-reveal inline-block">minded</span></h3>
                 </div>
-            </div>
+            </header>
 
 
-            {/* geometrie: partono dal centro e si fermano in cima */}
-            <div ref={geoRef} className="sticky top-0 z-10 p-2">
-                {/* @container: i box calcolano la loro altezza dalla larghezza della griglia (cqw) */}
-                <div className="@container grid grid-cols-3 gap-2">
+            {/* geometrie: partono dal centro e si fermano in cima. Altezza fissa: quando i
+                box si schiacciano il blocco non si accorcia e la pagina sotto non si sposta */}
+            <div ref={geoRef} className="sticky top-0 z-10 p-2 h-(--geo-height)">
+                <div className="grid grid-cols-3 gap-2">
                     <div className={geoBoxClass}>
                         <div className="bg-zinc-200 absolute h-1/4 w-8/16 left-0 top-0/4"></div>
                         <div className="bg-zinc-200 absolute h-1/4 w-[25cqh] left-0 top-1/4"></div>
@@ -202,15 +181,11 @@ export default function AppHeader() {
 
             </div>
 
-            {/* spazio tra geometrie e menu: porta il menu in fondo al primo schermo */}
-            {/* altezza impostata da update() */}
-            <div ref={spacerRef}></div>
-
-            {/* menu: sale con lo scroll e si ferma sotto le geometrie (top = loro altezza) */}
-            {/* stile del testo qui, ereditato dalle voci. [&_button]:uppercase: il reset di
+            {/* menu: mt lo porta in fondo al primo schermo (alto 1lh + pb-2); sale con lo
+                scroll e si ferma sotto le geometrie, seguendole mentre si schiacciano.
+                Stile del testo qui, ereditato dalle voci. [&_button]:uppercase: il reset di
                 Tailwind mette text-transform: none sui button, che quindi non lo ereditano */}
-            {/* top impostato da update(): l'altezza attuale delle geometrie */}
-            <nav ref={navRef} className="sticky z-10 px-2 pb-2 grid grid-cols-12 font-stretch-[125%] text-xs md:text-sm xl:text-base font-extralight leading-none tracking-wide uppercase [&_button]:uppercase">
+            <nav ref={navRef} className="sticky z-10 top-[calc(var(--geo-height)-var(--geo-box)*var(--squash)/2)] mt-[calc(50svh-var(--geo-height)/2-1lh-0.5rem)] px-2 pb-2 grid grid-cols-12 font-stretch-[125%] text-xs md:text-sm xl:text-base font-extralight leading-none tracking-wide uppercase [&_button]:uppercase">
 
                 <div className="md:col-span-4 max-md:hidden">
                     <div className="alive overflow-hidden">
@@ -243,6 +218,6 @@ export default function AppHeader() {
                 </div>
 
             </nav>
-        </header>
+        </>
     )
 }
