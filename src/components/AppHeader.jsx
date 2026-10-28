@@ -188,7 +188,7 @@ export default function AppHeader() {
                 Mobile: 3 colonne uguali, voci a sinistra, al centro e a destra (justify-self),
                 così non si spostano quando cambia il testo; da md la griglia a 12 colonne. Stile del testo qui, ereditato dalle voci. [&_button]:uppercase: il reset di
                 Tailwind mette text-transform: none sui button, che quindi non lo ereditano */}
-            <nav ref={navRef} className="sticky z-10 top-[calc(var(--geo-height)-var(--geo-box)*var(--squash)/2)] mt-[calc(50svh-var(--geo-height)/2-1lh-0.5rem)] px-2 pb-2 grid grid-cols-3 md:grid-cols-12 font-stretch-[125%] text-xs md:text-sm xl:text-base font-extralight leading-none tracking-wide uppercase [&_button]:uppercase">
+            <nav ref={navRef} className="sticky z-10 top-[calc(var(--geo-height)-var(--geo-box)*var(--squash)/2)] mt-[calc(50svh-var(--geo-height)/2-1lh-0.5rem)] px-2 pb-2 grid grid-cols-3 md:grid-cols-12 font-stretch-[125%] text-xs md:text-sm xl:text-base font-extralight leading-none tracking-wide uppercase [&_button]:uppercase bg-zinc-950">
 
                 <div className="md:col-span-4 max-md:hidden">
                     <div className="alive overflow-hidden">
