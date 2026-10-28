@@ -149,9 +149,11 @@ export default function AppHeader() {
 
 
             {/* geometrie: partono dal centro e si fermano in cima. Altezza fissa: quando i
-                box si schiacciano il blocco non si accorcia e la pagina sotto non si sposta */}
-            <div ref={geoRef} className="sticky top-0 z-10 p-2 h-(--geo-height)">
-                <div className="grid grid-cols-3 gap-2">
+                box si schiacciano il blocco non si accorcia e la pagina sotto non si sposta.
+                Gradiente: pieno fino a metà, zinc-950 al 70% di opacità all'80% (dove finisce il
+                menu agganciato), poi trasparente */}
+            <div ref={geoRef} className="sticky top-0 z-10 h-(--geo-height)">
+                <div className="grid grid-cols-3 gap-2 bg-zinc-950 p-2">
                     <div className={geoBoxClass}>
                         <div className="bg-zinc-200 absolute h-1/4 w-8/16 left-0 top-0/4"></div>
                         <div className="bg-zinc-200 absolute h-1/4 w-[25cqh] left-0 top-1/4"></div>
@@ -179,7 +181,6 @@ export default function AppHeader() {
                         <div className="bg-zinc-200 absolute h-1/4 w-4/16 left-12/16 top-1/4"></div>
                     </div>
                 </div>
-
             </div>
 
             {/* menu: mt lo porta in fondo al primo schermo (alto 1lh + pb-2); sale con lo
