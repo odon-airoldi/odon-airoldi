@@ -24,7 +24,7 @@ export default function IndexPage() {
                         </div>
                         <div className="col-span-12 md:col-span-4">
                             <p className="alive text-xs md:text-sm xl:text-base font-extralight uppercase leading-[1.25]">
-                                <span className="overflow-hidden"><span className="word-reveal block">Competenze sviluppate nelle esperienze professionali su progetti reali e consolidate con un percorso formativo fullstack.</span></span>
+                                <span className="overflow-hidden"><span className="word-reveal block">Competenze sviluppate nelle esperienze professionali su progetti reali e consolidate con un percorso formativo full stack.</span></span>
                             </p>
                         </div>
                         <div className="col-span-12 md:col-span-4">
