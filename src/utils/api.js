@@ -5,8 +5,7 @@ import axios from "axios";
 // (.env.development → localhost:3000, .env.production → api.odon-airoldi.com)
 const api = axios.create({
     baseURL: import.meta.env.VITE_API_URL,
-    // se l'API non risponde entro 5 secondi la richiesta viene annullata e finisce nel catch:
-    // così la splash non resta mai bloccata
+    // se l'API non risponde entro 5 secondi la richiesta viene annullata e finisce nel catch
     timeout: 5000
 });
 

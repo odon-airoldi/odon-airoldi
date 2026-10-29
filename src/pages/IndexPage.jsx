@@ -36,25 +36,25 @@ export default function IndexPage() {
                 </div>
 
                 <div className="col-span-6 col-start-7 md:col-span-4 md:col-start-5">
-                    <div className="alive text-xs md:text-sm xl:text-base font-stretch-[125%] font-extralight word-spacing-[.5em] leading-none tracking-wide uppercase overflow-hidden mb-4">
-                        <span className="word-reveal block">Stack</span>
+                    <div className="alive text-xs md:text-sm xl:text-base font-stretch-[125%] font-extralight leading-none tracking-wide uppercase overflow-hidden mb-4">
+                        <span className="word-reveal block">Core stack</span>
                     </div>
                     <AppList list={stack} groupBy="type" />
                 </div>
                 <div className="col-span-6 col-start-7 md:col-span-4">
-                    <div className="alive text-xs md:text-sm xl:text-base font-stretch-[125%] font-extralight word-spacing-[.5em] leading-none tracking-wide uppercase overflow-hidden mb-4">
-                        <span className="word-reveal block">Work</span>
+                    <div className="alive text-xs md:text-sm xl:text-base font-stretch-[125%] font-extralight leading-none tracking-wide uppercase overflow-hidden mb-4">
+                        <span className="word-reveal block">Selected works</span>
                     </div>
                     <AppList list={works} groupBy="type" />
                 </div>
                 <div className="col-span-6 col-start-7 md:col-span-4 md:col-start-5">
-                    <div className="alive text-xs md:text-sm xl:text-base font-stretch-[125%] font-extralight word-spacing-[.5em] leading-none tracking-wide uppercase overflow-hidden mb-4">
+                    <div className="alive text-xs md:text-sm xl:text-base font-stretch-[125%] font-extralight leading-none tracking-wide uppercase overflow-hidden mb-4">
                         <span className="word-reveal block">Formazione</span>
                     </div>
                     <AppList list={education} groupBy="organization" />
                 </div>
                 <div className="col-span-6 col-start-7 md:col-span-4">
-                    <div className="alive text-xs md:text-sm xl:text-base font-stretch-[125%] font-extralight word-spacing-[.5em] leading-none tracking-wide uppercase overflow-hidden mb-4">
+                    <div className="alive text-xs md:text-sm xl:text-base font-stretch-[125%] font-extralight leading-none tracking-wide uppercase overflow-hidden mb-4">
                         <span className="word-reveal block">Esperienza</span>
                     </div>
                     <AppList list={experience} groupBy="organization" />

@@ -66,8 +66,8 @@ export default function AppHeader() {
         return () => window.removeEventListener("scroll", check)
     }, [])
 
-    // ora corrente (ore:minuti), aggiornata ogni secondo così il cambio di minuto è puntuale
-    const formatTime = () => new Date().toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit" })
+    // ora corrente (ore:minuti:secondi), aggiornata ogni secondo
+    const formatTime = () => new Date().toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit", second: "2-digit" })
     const [time, setTime] = useState(formatTime)
 
     useEffect(() => {

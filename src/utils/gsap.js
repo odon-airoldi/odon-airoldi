@@ -48,8 +48,8 @@ function aliveGroups() {
         .filter(({ children }) => children.length);
 }
 
-// porta i figli nello stato di partenza. Si chiama subito, durante la splash,
-// così quando l'animazione parte non c'è nessuno scatto
+// porta i figli nello stato di partenza, prima che l'animazione parta:
+// così non c'è nessuno scatto
 export function setReveal() {
     aliveGroups().forEach(({ children }) =>
         children.forEach((el) => gsap.set(el, revealOf(el).from))
