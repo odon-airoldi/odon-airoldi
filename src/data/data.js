@@ -1,67 +1,67 @@
-// Nei progetti di graphic design prendono forma le mie prime competenze nello sviluppo web, poi coltivate nelle esperienze professionali e consolidate attraverso un percorso formativo fullstack. Metodo progettuale e sensibilità visiva accompagnano oggi il mio lavoro da sviluppatore.
+// Nei progetti di graphic design prendono forma le mie prime competenze nello sviluppo web, poi coltivate nelle esperienze professionali e consolidate attraverso un percorso formativo full-stack. Metodo progettuale e sensibilità visiva accompagnano oggi il mio lavoro da sviluppatore.
 const introText = `
-Web developer con un background nel graphic design. Sviluppo applicazioni web modulari e scalabili, curando layout ed esperienza utente. Competenze sviluppate nelle esperienze professionali su progetti reali e consolidate con un percorso formativo fullstack. Oggi seguo ogni progetto da due punti di vista, come funziona e come si vede, unendo logica e design in un unico processo.
+Web developer con un background nel graphic design. Sviluppo applicazioni web modulari e scalabili, curando layout ed esperienza utente. Competenze sviluppate nelle esperienze professionali su progetti reali e consolidate con un percorso formativo full-stack. Oggi seguo ogni progetto da due punti di vista, come funziona e come si vede, unendo logica e design in un unico processo.
 `;
 
 const stack = [
     {
         id: 1,
-        type: "frontend",
+        type: "front-end",
         title: "HTML"
     },
     {
         id: 2,
-        type: "frontend",
+        type: "front-end",
         title: "CSS"
     },
     {
         id: 3,
-        type: "frontend",
+        type: "front-end",
         title: "JavaScript"
     },
     {
         id: 4,
-        type: "frontend",
+        type: "front-end",
         title: "React"
     },
     {
         id: 5,
-        type: "frontend",
+        type: "front-end",
         title: "Tailwind"
     },
     {
         id: 6,
-        type: "frontend",
+        type: "front-end",
         title: "Bootstrap"
     },
     {
         id: 7,
-        type: "frontend",
+        type: "front-end",
         title: "Vite"
     },
     {
         id: 8,
-        type: "backend",
+        type: "back-end",
         title: "Node"
     },
     {
         id: 9,
-        type: "backend",
+        type: "back-end",
         title: "Express"
     },
     {
         id: 10,
-        type: "backend",
+        type: "back-end",
         title: "PHP"
     },
     {
         id: 11,
-        type: "backend",
+        type: "back-end",
         title: "Laravel"
     },
     {
         id: 12,
-        type: "backend",
+        type: "back-end",
         title: "REST API"
     },
     {
@@ -165,7 +165,7 @@ const experience = [
     {
         id: 1,
         organization: "Tuttocialde Agostani",
-        focus: ["Frontend developer", "Graphic designer"],
+        focus: ["Front-end developer", "Graphic designer"],
         location: "Molteno",
         year_start: 2022,
         year_end: 2025
@@ -173,7 +173,7 @@ const experience = [
     {
         id: 2,
         organization: "Studiolabo",
-        focus: ["Frontend developer"],
+        focus: ["Front-end developer"],
         location: "Milano",
         year_start: 2020,
         year_end: 2022

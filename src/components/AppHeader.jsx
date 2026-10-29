@@ -152,7 +152,7 @@ export default function AppHeader() {
             <header className="p-2 h-[calc(50svh-var(--geo-height)/2)]">
                 <div className="text-[6vw] lg:text-[4vw] leading-[.8] font-[450] tracking-tighter uppercase">
                     <h1 className="alive overflow-hidden"><span className="word-reveal inline-block">Odon</span> <span className="word-reveal inline-block">Airoldi</span></h1>
-                    <h2 className="alive overflow-hidden"><span className="word-reveal inline-block">Full stack</span> <span className="word-reveal inline-block">developer</span></h2>
+                    <h2 className="alive overflow-hidden"><span className="word-reveal inline-block">Full-stack</span> <span className="word-reveal inline-block">developer</span></h2>
                     <h3 className="alive overflow-hidden"><span className="word-reveal inline-block">Design</span> <span className="word-reveal inline-block">minded</span></h3>
                 </div>
             </header>

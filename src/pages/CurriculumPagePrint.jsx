@@ -19,7 +19,7 @@ export default function CurriculumPagePrint() {
                 <header className="col-span-12">
                     <div className="text-[24pt] leading-[.8] font-medium tracking-tighter uppercase">
                         <h1><span>Odon</span> <span>Airoldi</span></h1>
-                        <h2><span>Full stack</span> <span>developer</span></h2>
+                        <h2><span>Full-stack</span> <span>developer</span></h2>
                         <h3><span>Design</span> <span>minded</span></h3>
                     </div>
                 </header>
@@ -75,7 +75,7 @@ export default function CurriculumPagePrint() {
                 </div>
                 <div className="col-span-4">
                     <p className="text-[8pt] font-light leading-none tracking-wide uppercase">
-                        Competenze sviluppate nelle esperienze professionali su progetti reali e consolidate con un percorso formativo full stack.
+                        Competenze sviluppate nelle esperienze professionali su progetti reali e consolidate con un percorso formativo full-stack.
                     </p>
                 </div>
                 <div className="col-span-4">
