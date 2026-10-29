@@ -4,6 +4,7 @@ import { gsap } from "gsap"
 import { useGSAP } from "@gsap/react"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { ScrollToPlugin } from "gsap/ScrollToPlugin"
+import { useAppContext } from "../contexts/AppContext"
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin)
 
@@ -52,14 +53,32 @@ export default function AppHeader() {
         })
     })
 
-    // true quando il testo di presentazione (#about) arriva sotto geometrie e menu
+    // ingresso delle geometrie: il markup è la forma finale. Prima si portano i pezzi
+    // nella posizione di partenza (gsap.set, subito, senza scatti), poi la timeline li
+    // riporta lì uno dopo l'altro. Spostamenti su top, in % del box: 25% = una riga
+    useGSAP(() => {
+        // blocco 1: la parte sinistra parte una riga più in basso, allineata alla destra (un rettangolo)
+        gsap.set(".geo-1-left", { top: "+=25%" })
+        // blocco 2: i due pezzi centrali partono una riga più in basso
+        gsap.set(".geo-2-center", { top: "+=25%" })
+        // blocco 3: i due pezzi centrali partono sulla riga degli altri orizzontali
+        gsap.set(".geo-3-center", { top: "25%" })
+
+        const tl = gsap.timeline({ delay: .2, defaults: { duration: .6, ease: "power3.inOut" } })
+        tl.to(".geo-1-left", { top: "-=25%" })
+        tl.to(".geo-2-center", { top: "-=25%" }, "-=.4")
+        // quello in alto sale (0%), quello in basso scende (50%)
+        tl.to(".geo-3-center", { top: (i) => (i === 0 ? "0%" : "50%") }, "-=.4")
+    }, { scope: geoRef })
+
+    // true quando il testo di presentazione (#about) entra nello schermo dal basso,
+    // e resta true anche quando si scrolla oltre
     const [aboutReached, setAboutReached] = useState(false)
 
     useEffect(() => {
         const check = () => {
             const about = document.getElementById("about")
-            // Math.round: la posizione può avere decimali
-            setAboutReached(!!about && Math.round(about.getBoundingClientRect().top) <= stuckHeight())
+            setAboutReached(!!about && about.getBoundingClientRect().top < window.innerHeight)
         }
         check()
         window.addEventListener("scroll", check)
@@ -75,19 +94,10 @@ export default function AppHeader() {
         return () => clearInterval(interval)
     }, [])
 
-    // API key openweathermap
-    const apiKey = import.meta.env.VITE_API_KEY_OWM
-    const [dataWeather, setDataWeather] = useState({})
-    // Chiamata AJAX tramite fetch API openweathermap: temperatura di Lecco
-    useEffect(() => {
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=Lecco&appid=${apiKey}&units=metric`)
-            .then(res => res.json())
-            .then(data => {
-                setDataWeather(data)
-            })
-    }, [apiKey])
+    // meteo di Lecco, caricato nel context insieme agli altri dati
+    const { dataWeather } = useAppContext()
 
-    // la voce diventa Odon Airoldi quando si arriva al testo (aboutReached), ma al
+    // la voce diventa Odon Airoldi quando il testo entra nello schermo (aboutReached), ma al
     // click cambia subito, come Email me: aboutForced vale durante lo scorrimento
     // (true verso il testo, false verso la cima), poi torna null e decide lo scroll
     const [aboutForced, setAboutForced] = useState(null)
@@ -155,9 +165,9 @@ export default function AppHeader() {
             <div ref={geoRef} className="sticky top-0 z-10 h-(--geo-height)">
                 <div className="grid grid-cols-3 gap-2 bg-zinc-950 p-2">
                     <div className={geoBoxClass}>
-                        <div className="bg-zinc-200 absolute h-1/4 w-8/16 left-0 top-0/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-[25cqh] left-0 top-1/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-8/16 left-0 top-2/4"></div>
+                        <div className="bg-zinc-200 absolute h-1/4 w-8/16 left-0 top-0/4 geo-1-left"></div>
+                        <div className="bg-zinc-200 absolute h-1/4 w-[25cqh] left-0 top-1/4 geo-1-left"></div>
+                        <div className="bg-zinc-200 absolute h-1/4 w-8/16 left-0 top-2/4 geo-1-left"></div>
                         <div className="bg-zinc-200 absolute h-1/4 w-8/16 left-8/16 top-1/4"></div>
                         <div className="bg-zinc-200 absolute h-1/4 w-[25cqh] right-0 top-2/4"></div>
                         <div className="bg-zinc-200 absolute h-1/4 w-8/16 left-8/16 top-3/4"></div>
@@ -166,15 +176,15 @@ export default function AppHeader() {
                         <div className="bg-zinc-200 absolute h-1/4 w-4/16 left-0 top-1/4"></div>
                         <div className="bg-zinc-200 absolute h-1/4 w-[25cqh] left-0 top-1/2"></div>
                         <div className="bg-zinc-200 absolute h-1/4 w-4/16 left-0 top-3/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-8/16 left-4/16 top-0"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-8/16 left-4/16 top-1/2"></div>
+                        <div className="bg-zinc-200 absolute h-1/4 w-8/16 left-4/16 top-0 geo-2-center"></div>
+                        <div className="bg-zinc-200 absolute h-1/4 w-8/16 left-4/16 top-1/2 geo-2-center"></div>
                         <div className="bg-zinc-200 absolute h-1/4 w-4/16 left-12/16 top-1/4"></div>
                         <div className="bg-zinc-200 absolute h-1/4 w-[25cqh] right-0 top-1/2"></div>
                         <div className="bg-zinc-200 absolute h-1/4 w-4/16 left-12/16 top-3/4"></div>
                     </div>
                     <div className={geoBoxClass}>
-                        <div className="bg-zinc-200 absolute h-1/4 w-8/16 left-4/16 top-0/4"></div>
-                        <div className="bg-zinc-200 absolute h-1/4 w-8/16 left-4/16 top-2/4"></div>
+                        <div className="bg-zinc-200 absolute h-1/4 w-8/16 left-4/16 top-0/4 geo-3-center"></div>
+                        <div className="bg-zinc-200 absolute h-1/4 w-8/16 left-4/16 top-2/4 geo-3-center"></div>
                         <div className="bg-zinc-200 absolute h-2/4 w-[25cqh] left-0 top-2/4"></div>
                         <div className="bg-zinc-200 absolute h-1/4 w-4/16 left-0/16 top-1/4"></div>
                         <div className="bg-zinc-200 absolute h-2/4 w-[25cqh] right-0 top-2/4"></div>

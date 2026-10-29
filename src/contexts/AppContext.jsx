@@ -24,10 +24,22 @@ function AppProvider({ children }) {
         }
     }
 
+    // meteo di Lecco da openweathermap (temperatura nel menu): {} finché non arriva
+    const [dataWeather, setDataWeather] = useState({});
+
+    function getWeather() {
+        const apiKey = import.meta.env.VITE_API_KEY_OWM;
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=Lecco&appid=${apiKey}&units=metric`)
+            .then(res => res.json())
+            .then(data => setDataWeather(data))
+            .catch(error => console.error(error));
+    }
+
     // [] = eseguito una sola volta, al primo render.
     // In sviluppo StrictMode lo esegue due volte (due richieste nella scheda Network): online una sola
     useEffect(() => {
         getWorks();
+        getWeather();
     }, []);
 
     return (
@@ -36,7 +48,9 @@ function AppProvider({ children }) {
             value={{
                 // qui vanno i dati/funzioni condivisi
                 // lavori dall'API, letti dalle pagine con useAppContext()
-                works
+                works,
+                // meteo, letto dal menu nell'header
+                dataWeather
             }}
         >
             {
