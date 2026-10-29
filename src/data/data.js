@@ -1,6 +1,6 @@
 // Nei progetti di graphic design prendono forma le mie prime competenze nello sviluppo web, poi coltivate nelle esperienze professionali e consolidate attraverso un percorso formativo fullstack. Metodo progettuale e sensibilità visiva accompagnano oggi il mio lavoro da sviluppatore.
 const introText = `
-Web developer con un background nel graphic design. Competenze sviluppate nelle esperienze professionali e consolidate con un percorso formativo fullstack. Oggi seguo ogni progetto da due punti di vista, come funziona e come si vede.
+Web developer con un background nel graphic design. Sviluppo applicazioni web modulari e scalabili, curando layout ed esperienza utente. Competenze sviluppate nelle esperienze professionali su progetti reali e consolidate con un percorso formativo fullstack. Oggi seguo ogni progetto da due punti di vista, come funziona e come si vede, unendo logica e design in un unico processo.
 `;
 
 const stack = [

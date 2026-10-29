@@ -17,17 +17,12 @@ export default function CurriculumPagePrint() {
 
             <div className="grid grid-cols-12 gap-x-2 xl:gap-x-4 gap-y-[12pt]">
                 <header className="col-span-12">
-                    <div className="text-[32pt] leading-[.8] font-extralight tracking-tighter uppercase">
-                        <h1 className="flex justify-between"><span>Odon</span> <span>Airoldi</span></h1>
-                        <h2 className="flex justify-between"><span>fullstack</span> <span>developer</span></h2>
-                        <h3 className="flex justify-between"><span>design</span> <span>minded</span></h3>
+                    <div className="text-[24pt] leading-[.8] font-medium tracking-tighter uppercase">
+                        <h1><span>Odon</span> <span>Airoldi</span></h1>
+                        <h2><span>fullstack</span> <span>developer</span></h2>
+                        <h3><span>design</span> <span>minded</span></h3>
                     </div>
                 </header>
-                <div className="col-span-12">
-                    <p className="text-[12pt] font-extralight uppercase leading-none text-justify word-spacing-[.5em]">
-                        {introText}
-                    </p>
-                </div>
                 <div className="col-span-4">
                     <div className="text-[6pt] font-normal word-spacing-[.5em] leading-none tracking-wide uppercase border-t border-black pt-[2pt]">
                         Odon
@@ -72,6 +67,21 @@ export default function CurriculumPagePrint() {
                     <div className="text-[6pt] font-normal word-spacing-[.5em] leading-none tracking-wide uppercase border-t border-black pt-[2pt]">
                         <Link to="https://github.com/odon-airoldi">github.com/odon-airoldi</Link>
                     </div>
+                </div>
+                <div className="col-span-4">
+                    <p className="text-[8pt] font-light leading-none tracking-wide uppercase">
+                        Web developer con un background nel graphic design. Sviluppo applicazioni web modulari e scalabili, curando layout ed esperienza utente.
+                    </p>
+                </div>
+                <div className="col-span-4">
+                    <p className="text-[8pt] font-light leading-none tracking-wide uppercase">
+                        Competenze sviluppate nelle esperienze professionali su progetti reali e consolidate con un percorso formativo fullstack.
+                    </p>
+                </div>
+                <div className="col-span-4">
+                    <p className="text-[8pt] font-light leading-none tracking-wide uppercase">
+                        Oggi seguo ogni progetto da due punti di vista, come funziona e come si vede, unendo logica e design in un unico processo.
+                    </p>
                 </div>
                 <div className="col-span-4 col-start-5 mt-[6pt]">
                     <div className="text-[8pt] font-light leading-none tracking-wide uppercase border-t border-black pt-[4pt] mb-[8pt]">
@@ -186,14 +196,14 @@ export default function CurriculumPagePrint() {
                             </ul>
                         </li>
                     </ul>
-                    <div className="absolute bottom-0 text-[20pt] font-extralight leading-none tracking-tighter"><Link to="https://www.odon-airoldi.com">odon-airoldi.com</Link></div>
                 </div>
             </div>
+            <div className="absolute right-[8pt] bottom-[8pt] text-[24pt] leading-[.8] font-medium tracking-tighter uppercase"><Link to="https://www.odon-airoldi.com">odon-airoldi.com</Link></div>
             <img src={odonAiroldiCv} alt="Odon Airoldi" className="absolute bottom-[8pt] left-[8pt] w-[128pt] h-[160pt]" />
             <footer className="absolute bottom-[176pt] left-[8pt] [writing-mode:vertical-rl] rotate-180 whitespace-nowrap uppercase text-[4pt] leading-none">
                 Autorizzo il trattamento dei dati personali ai sensi del GDPR Reg. UE 2016/679
             </footer>
-        </div>
+        </div >
     );
 }
 
