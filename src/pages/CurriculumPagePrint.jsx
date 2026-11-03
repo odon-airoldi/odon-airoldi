@@ -31,7 +31,7 @@ export default function CurriculumPagePrint() {
                 <div className="col-span-15 col-start-10">
                     <div className="text-[24pt] leading-[.8] font-medium uppercase mt-[24pt] mb-[16pt]">
                         <h1 className="inline-block -translate-x-full">Odon Airoldi</h1>
-                        <h2 className="inline-block">Front end developer</h2>
+                        <h2 className="inline-block">Full stack developer</h2>
                     </div>
                 </div>
 

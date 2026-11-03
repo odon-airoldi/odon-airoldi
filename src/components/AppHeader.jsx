@@ -120,7 +120,7 @@ export default function AppHeader() {
     // apre il pdf in una nuova scheda, nel lettore pdf del browser. Il file
     // sta in public/ (indirizzo fisso): quando il cv cambia va riesportato lì
     const handleGetCv = () => {
-        window.open("/odon-airoldi-cv.pdf", "_blank");
+        window.open("/odon-airoldi-full-stack-developer-cv.pdf", "_blank");
     };
 
     const [copied, setCopied] = useState(false)
@@ -153,7 +153,7 @@ export default function AppHeader() {
                 <div className="text-[6vw] lg:text-[4vw] leading-[.8] font-[450] tracking-tighter uppercase">
                     <h1 className="alive overflow-hidden"><span className="word-reveal inline-block">Odon</span> <span className="word-reveal inline-block">Airoldi</span></h1>
                     <h2 className="alive overflow-hidden"><span className="word-reveal inline-block">Full stack</span> <span className="word-reveal inline-block">developer</span></h2>
-                    <h3 className="alive overflow-hidden"><span className="word-reveal inline-block">Design</span> <span className="word-reveal inline-block">minded</span></h3>
+                    <h3 className="alive overflow-hidden"><span className="word-reveal inline-block">UX/UI</span> <span className="word-reveal inline-block">oriented</span></h3>
                 </div>
             </header>
 
