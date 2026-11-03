@@ -117,6 +117,9 @@ export default function AppList({ list, groupBy }) {
                                         : item.organization ?
                                             <Fragment key={index}>
                                                 {item.focus?.map((f) => <li key={f}>{f}</li>)}
+                                                {["Boolean", "Isgmd", "Brera"].includes(item.organization) &&
+                                                    <li>{item.description}</li>
+                                                }
                                                 <li>{item.location}</li>
                                                 <li>{item.year_start === item.year_end ? item.year_start : `${item.year_start} ${item.year_end}`}</li>
                                             </Fragment>
