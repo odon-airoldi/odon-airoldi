@@ -8,20 +8,6 @@ import { useAppContext } from "../contexts/AppContext"
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin)
 
-// due testi sovrapposti nella stessa cella (grid): con show il secondario sale dal
-// basso e il primario esce salendo; tornando indietro fanno il percorso inverso.
-// La cella è larga quanto il testo più lungo, così la voce non cambia larghezza.
-// overflow-hidden nasconde quello fuori posto
-function SwapText({ show, primary, secondary }) {
-    const base = "col-start-1 row-start-1 transition-transform duration-500 ease-out"
-    return (
-        <span className="grid overflow-hidden">
-            <span className={`${base} ${show ? "-translate-y-full" : "translate-y-0"}`} aria-hidden={show}>{primary}</span>
-            <span className={`${base} ${show ? "translate-y-0" : "translate-y-full"}`} aria-hidden={!show}>{secondary}</span>
-        </span>
-    )
-}
-
 export default function AppHeader() {
 
     const { pathname } = useLocation();
@@ -198,7 +184,7 @@ export default function AppHeader() {
                 Mobile: 3 colonne uguali, voci a sinistra, al centro e a destra (justify-self),
                 così non si spostano quando cambia il testo; da md la griglia a 12 colonne. Stile del testo qui, ereditato dalle voci. [&_button]:uppercase: il reset di
                 Tailwind mette text-transform: none sui button, che quindi non lo ereditano */}
-            <nav ref={navRef} className="sticky z-10 top-[calc(var(--geo-height)-var(--geo-box)*var(--squash)/2)] mt-[calc(50svh-var(--geo-height)/2-1lh-0.5rem)] px-2 pb-2 grid grid-cols-3 md:grid-cols-12 font-stretch-[125%] text-xs md:text-sm xl:text-base font-extralight leading-none tracking-wide uppercase [&_button]:uppercase bg-zinc-950">
+            <nav ref={navRef} className="sticky z-10 top-[calc(var(--geo-height)-var(--geo-box)*var(--squash)/2)] mt-[calc(50svh-var(--geo-height)/2-1lh-0.5rem)] px-2 pb-2 grid grid-cols-3 md:grid-cols-12 font-stretch-[125%] text-xs sm:text-sm lg:text-lg font-medium leading-none tracking-wide uppercase [&_button]:uppercase bg-zinc-950">
 
                 <div className="md:col-span-4 max-md:hidden">
                     <div className="alive overflow-hidden">
@@ -208,18 +194,28 @@ export default function AppHeader() {
 
                 <div className="md:col-span-3">
                     <button className="alive overflow-hidden cursor-pointer block w-full text-left hover:text-zinc-50" type="button" onClick={aboutOpen ? handleBackToTop : handleAboutMe}>
-                        <span className="word-reveal block"><SwapText show={aboutOpen} primary="About me" secondary="Odon Airoldi" /></span>
+                        <span className="word-reveal block">
+                            <span className="grid overflow-hidden">
+                                <span className={`col-start-1 row-start-1 transition-transform duration-500 ease-out ${aboutOpen ? "-translate-y-full" : "translate-y-0"}`} aria-hidden={aboutOpen}>About me</span>
+                                <span className={`col-start-1 row-start-1 transition-transform duration-500 ease-out ${aboutOpen ? "translate-y-0" : "translate-y-full"}`} aria-hidden={!aboutOpen}>Odon Airoldi</span>
+                            </span>
+                        </span>
                     </button>
                 </div>
 
-                <div className="justify-self-center md:justify-self-auto md:col-span-2">
-                    <button className="alive overflow-hidden cursor-pointer block w-full text-left hover:text-zinc-50" type="button" onClick={handleCopyEmail}>
-                        <span className="word-reveal block"><SwapText show={copied} primary="Email me" secondary="Copied" /></span>
+                <div className="md:col-span-2">
+                    <button className="alive overflow-hidden cursor-pointer block w-full text-right md:text-left hover:text-zinc-50" type="button" onClick={handleCopyEmail}>
+                        <span className="word-reveal block">
+                            <span className="grid overflow-hidden">
+                                <span className={`col-start-1 row-start-1 transition-transform duration-500 ease-out ${copied ? "-translate-y-full" : "translate-y-0"}`} aria-hidden={copied}>Email me</span>
+                                <span className={`col-start-1 row-start-1 transition-transform duration-500 ease-out ${copied ? "translate-y-0" : "translate-y-full"}`} aria-hidden={!copied}>Copied</span>
+                            </span>
+                        </span>
                     </button>
                 </div>
 
-                <div className="justify-self-end md:justify-self-auto md:col-span-2">
-                    <button className="alive overflow-hidden cursor-pointer block w-full text-left hover:text-zinc-50" type="button" onClick={handleGetCv}>
+                <div className="md:col-span-2">
+                    <button className="alive overflow-hidden cursor-pointer block w-full text-right md:text-left hover:text-zinc-50" type="button" onClick={handleGetCv}>
                         <span className="word-reveal block">Get CV</span>
                     </button>
                 </div>
