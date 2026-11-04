@@ -37,7 +37,7 @@ export default function IndexPage() {
                             <p className="alive text-xs md:text-sm xl:text-base font-extralight uppercase leading-[1.25]">
                                 <span className="overflow-hidden">
                                     <span className="word-reveal block">
-                                        Il background nel graphic design completa il profilo tecnico e orienta il mio approccio alla UX/UI.
+                                        Il mio background nel design orienta l’approccio allo sviluppo, integrando la cura della UX/UI nel progetto.
                                     </span>
                                 </span>
                             </p>
