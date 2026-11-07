@@ -31,8 +31,8 @@ export default function CurriculumPagePrint() {
                 <div className="col-span-15 col-start-10">
                     <div className="text-[24pt] leading-[.8] font-medium uppercase mt-[24pt] mb-[16pt]">
                         <h1 className="inline-block -translate-x-full">Odon Airoldi</h1>
-                        <h2 className="inline-block">Full stack developer</h2>
-                        {/* <h2 className="inline-block">Front end developer</h2> */}
+                        {/* <h2 className="inline-block">Full stack developer</h2> */}
+                        <h2 className="inline-block">Front end developer</h2>
                     </div>
                 </div>
 
@@ -110,7 +110,7 @@ export default function CurriculumPagePrint() {
 
                     <div className="mb-[24pt]">
                         <p>
-                            Web developer con sei anni di esperienza nello sviluppo front-end e competenze back-end consolidate attraverso progetti professionali e una formazione full-stack. Progetto applicazioni web trasformando requisiti e design in interfacce concrete e funzionali. Il mio background nel graphic design orienta il mio approccio allo sviluppo, integrando la progettazione UI/UX nel processo di lavoro.
+                            Web developer con sei anni di esperienza nello sviluppo front-end e competenze back-end consolidate attraverso progetti professionali e una formazione full-stack. Progetto applicazioni web trasformando requisiti e design in interfacce concrete e funzionali. Il mio background nel graphic design orienta il mio approccio allo sviluppo, integrando la progettazione UX/UI nel processo di lavoro.
                         </p>
                     </div>
                     <div className="mb-[24pt]">
