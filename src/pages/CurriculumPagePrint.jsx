@@ -21,7 +21,7 @@ export default function CurriculumPagePrint() {
                     <div className="flex gap-[8pt] justify-center uppercase">
                         <div className="">odon.airoldi@gmail.com</div>
                         <div className="">+39 340 9900243</div>
-                        <div className="">Lecco LC</div>
+                        <div className="">Galbiate LC</div>
                         <div className=""><Link to="https://www.linkedin.com/in/odon-airoldi/">linkedin.com/in/odon-airoldi</Link></div>
                         <div className=""><Link to="https://github.com/odon-airoldi">github.com/odon-airoldi</Link></div>
                         <div className=""><Link to="https://www.odon-airoldi.com">odon-airoldi.com</Link></div>
@@ -32,7 +32,9 @@ export default function CurriculumPagePrint() {
                     <div className="text-[24pt] leading-[.8] font-medium uppercase mt-[24pt] mb-[16pt]">
                         <h1 className="inline-block -translate-x-full">Odon Airoldi</h1>
                         {/* <h2 className="inline-block">Full stack developer</h2> */}
-                        <h2 className="inline-block">Front end developer</h2>
+                        {/* <h2 className="inline-block">Front end developer</h2> */}
+                        <h2 className="inline-block">Web developer</h2>
+
                     </div>
                 </div>
 
